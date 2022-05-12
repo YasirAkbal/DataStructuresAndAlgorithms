@@ -12,7 +12,7 @@ public final class IsPrime {
     private IsPrime() { }
     
     /*
-    Bir sayının tam bölenleri a<= b olmak üzere (a,b) ikilileri halinde bulunur. Örn;
+    Bir sayının tam bölenleri a <= b olmak üzere (a,b) ikilileri halinde bulunur. Örn;
     30 -> (1,30) - (2,15) - (3,10) - (5,6)
     25 -> (1,25) - (5,5)
     Herbir ikilideki ilk sayıyı işlem yaptığımız sayıya böldüğümüzde o ikilideki diğer sayıyı elde ederiz.
@@ -23,6 +23,8 @@ public final class IsPrime {
     n her zaman tam kare olamayabilir. Bu yüzden sqrt(n) aşağı yuvarlanmalıdır veya i*i <= n yazılır.
     */
     
+    
+    //Worst case -> BigTheta(sqrt(n))
     public static boolean efficientSolution1(int n) {
         if(n < 2) { return false; }
         if(n == 2 || n == 3) { return true; }

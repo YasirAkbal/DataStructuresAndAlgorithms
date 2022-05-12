@@ -33,7 +33,7 @@ public final class PowerOfNumber {
     Son biti 1 ise result *= temp olur. 0'sa hiçbir işlem yapılmaz.
     Her iterasyon sonunda üs 2'ye bölünür yani son biti atılır.
     19 -> 10011 -> her bir bit 3^(2^i) çarpanını ifade eder;
-    3^19 = 1*3^16 * 0*3^8 * 0*3^4 * 0*3^2 * 0*3^1
+    3^19 = 1*3^16 * 0*3^8 * 0*3^4 * 1*3^2 * 1*3^1
     */
     public static int powerIteratif(int number, int x) {
         int result = 1;
