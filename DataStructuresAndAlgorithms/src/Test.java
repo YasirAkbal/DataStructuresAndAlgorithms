@@ -10,6 +10,7 @@
 
 import Algorithms.Mathematical.*;
 import Algorithms.BitManipulation.*;
+import Algorithms.Recursive.*;
 
 public class Test {
 
@@ -31,7 +32,16 @@ public class Test {
         int[] arr = {3,4,4,3,5,1,1,5,7,1,1,9};
         TwoOddOccurences.solution(arr);*/
         //PowerOfSet.solution("abcd");
-        System.out.println();
+        //GenerateSubsets.solution("abc");
+        //HanoiProblem.solution(2);
+        //System.out.println(RopeCuttingProblem.solution(25, 5, 14, 12));
+        //System.out.println(SumOfDigits.solution(43));
+        //System.out.println(Algorithms.Recursive.Palindrome.solution("selam"));
+        //System.out.println(JosephusProblem.solution(4, 3));
+        /*int[] arr = {10,5,2,3,6};
+        System.out.println(SubsetSumProblem.solution1(arr, 31));*/
+        //AllPermutations.solution1("ABC");
+        AllPermutations.solution2("ABC");
     }
     
 }

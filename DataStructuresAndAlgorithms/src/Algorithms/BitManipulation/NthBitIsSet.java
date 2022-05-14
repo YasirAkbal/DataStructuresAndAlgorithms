@@ -13,7 +13,7 @@ public final class NthBitIsSet {
     
     /*
     N. biti en saga getir(LSB) ve onu 1 ile and işlemine sok
-    Sonuç 1 ise n. bit 1'dir. Değilse(
+    Sonuç 1 ise n. bit 1'dir. 
     BigTheta(log2(n))
     */
     public static boolean withRightShift(int number, int n) {
