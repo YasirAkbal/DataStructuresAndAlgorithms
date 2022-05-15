@@ -11,9 +11,12 @@
 import Algorithms.Mathematical.*;
 import Algorithms.BitManipulation.*;
 import Algorithms.Recursive.*;
+import Algorithms.Arrays.*;
+import Utils.ArrayUtils;
+import java.util.Arrays;
 
 public class Test {
-
+    private static ArrayUtils<Integer> utils = new ArrayUtils<>();
     /**
      * @param args the command line arguments
      */
@@ -41,7 +44,23 @@ public class Test {
         /*int[] arr = {10,5,2,3,6};
         System.out.println(SubsetSumProblem.solution1(arr, 31));*/
         //AllPermutations.solution1("ABC");
-        AllPermutations.solution2("ABC");
+        //AllPermutations.solution2("ABC");
+        
+        //Integer[] arr = {1,2,3,4,5};
+        //utils.reverse(arr);
+        //System.out.println(SecondLargestInArray.solution(arr));
+        //LeftRotateAnArray.leftRotateDTimesSolution4(arr, 2);
+        
+        int[] arr = {5,-2,3,4};
+        //LeadersInAnArray.solution2(arr);
+        //System.out.println(MaximumDifferenceInAnArray.solution(arr));
+        //int[] sortedArr = {1,2,3};
+        //FreqInSortedArray.solution1(sortedArr);
+        
+        //System.out.println(StockBuyAndSell.solution1(arr));
+        //System.out.println(TrappingRainWater.solution1(arr));
+        //System.out.println(MaximumSumSubarray.solution2(arr));
+        System.out.println(MaximumCircularSubarraySum.solution2(arr));
     }
     
 }
