@@ -12,6 +12,7 @@ import Algorithms.Mathematical.*;
 import Algorithms.BitManipulation.*;
 import Algorithms.Recursive.*;
 import Algorithms.Arrays.*;
+import Algorithms.Searching.*;
 import Utils.ArrayUtils;
 import java.util.Arrays;
 
@@ -51,7 +52,7 @@ public class Test {
         //System.out.println(SecondLargestInArray.solution(arr));
         //LeftRotateAnArray.leftRotateDTimesSolution4(arr, 2);
         
-        int[] arr = {5,-2,3,4};
+        //int[] arr = {1,4,31,6,1,20,3,10,5};
         //LeadersInAnArray.solution2(arr);
         //System.out.println(MaximumDifferenceInAnArray.solution(arr));
         //int[] sortedArr = {1,2,3};
@@ -60,7 +61,17 @@ public class Test {
         //System.out.println(StockBuyAndSell.solution1(arr));
         //System.out.println(TrappingRainWater.solution1(arr));
         //System.out.println(MaximumSumSubarray.solution2(arr));
-        System.out.println(MaximumCircularSubarraySum.solution2(arr));
+        //System.out.println(MaximumCircularSubarraySum.solution2(arr));
+        //System.out.println(MajorityElementInAnArray.solution(arr));
+        //System.out.println(MinimumConsecutiveFlips.efficientSolution(arr));
+        //System.out.println(SlidingWindowTechnique.maxKConsecutiveElements(arr, 3));
+        //System.out.println(SlidingWindowTechnique.findSubarrayWithGivenSum(arr, 33));
+        //SlidingWindowTechnique.N_BonacciNumber(3, 8);
+        
+        int[] arr = {1,4,7,9,7,11,12,15,16};
+        //System.out.println(FirstOccurence.recursive(arr, 7));
+        //System.out.println(SquareRoot.efficientSolution(13));
+        System.out.println(TwoPointerApproach.isTripletSum(arr, 27));
     }
     
 }

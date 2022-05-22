@@ -33,6 +33,8 @@ public final class MaximumCircularSubarraySum {
     //BigTheta(n)
     public static int solution2(int[] arr) {
         int normalArrSubArraysMax = MaximumSumSubarray.solution2(arr);
+        if(normalArrSubArraysMax < 0) { return normalArrSubArraysMax; }
+        
         int minSubArraySum = minSubArraySum(arr);
         int sumOfArray = Arrays.stream(arr).sum();
         int rotatedArraySubArraysMax = sumOfArray - minSubArraySum;
