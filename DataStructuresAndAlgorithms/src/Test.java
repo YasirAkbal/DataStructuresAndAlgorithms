@@ -13,6 +13,7 @@ import Algorithms.BitManipulation.*;
 import Algorithms.Recursive.*;
 import Algorithms.Arrays.*;
 import Algorithms.Searching.*;
+import Algorithms.Sorting.*;
 import Utils.ArrayUtils;
 import java.util.Arrays;
 
@@ -21,6 +22,8 @@ public class Test {
     /**
      * @param args the command line arguments
      */
+    
+    private static ArrayUtils<Integer> util = new ArrayUtils<>();
     public static void main(String[] args) {
         //PrimeFactors.efficientSolution1Optimized(105);
         //AllPrimesToN.inefficientSolution(153);
@@ -68,10 +71,14 @@ public class Test {
         //System.out.println(SlidingWindowTechnique.findSubarrayWithGivenSum(arr, 33));
         //SlidingWindowTechnique.N_BonacciNumber(3, 8);
         
-        int[] arr = {1,4,7,9,7,11,12,15,16};
+        //int[] arr = {1,4,7,9,7,11,12,15,16};
         //System.out.println(FirstOccurence.recursive(arr, 7));
         //System.out.println(SquareRoot.efficientSolution(13));
-        System.out.println(TwoPointerApproach.isTripletSum(arr, 27));
+        //System.out.println(TwoPointerApproach.isTripletSum(arr, 27));
+        
+        Integer[] arr = {3,7,1,15,5,3,6,2};
+        SelectionSort.run(arr);
+        utils.printArr(arr);
     }
     
 }

@@ -27,7 +27,7 @@ public final class UnboundedBinarySearch {
         
         if(arr[i] == x) { return i; }
         
-        //verilen dizinin x'den büyük olduğu ilk 2'nin katı indexi bulmuştik. aradığımız eleman eğer dizide varsa i/2+1 ile i-1 indexleri olmalı. 
+        //verilen dizinin x'den büyük olduğu ilk 2'nin katı indexi bulmuştuk. aradığımız eleman eğer dizide varsa i/2+1 ile i-1 indexleri arasında olmalı. 
         //log2(position*2-position) = log2(position)
         return BinarySearch._recursive(arr, i/2+1, i-1, x);
     } 
