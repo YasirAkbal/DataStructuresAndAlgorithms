@@ -76,8 +76,12 @@ public class Test {
         //System.out.println(SquareRoot.efficientSolution(13));
         //System.out.println(TwoPointerApproach.isTripletSum(arr, 27));
         
-        Integer[] arr = {3,7,1,15,5,3,6,2};
-        SelectionSort.run(arr);
+        Integer[] arr = {351,4,31,6,20,3,10,5,1};
+        //SelectionSort.run(arr);
+        //QuickSort.quickSort(arr);
+        //utils.merge(arr, 0, 2, arr.length-1);
+       
+        MergeSort.iterative(arr);
         utils.printArr(arr);
     }
     

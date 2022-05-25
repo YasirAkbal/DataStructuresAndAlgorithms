@@ -55,4 +55,26 @@ public final class ArrayUtils<T> {
         }
         System.out.println();
     }
+    
+    public void merge(Integer[] arr, int left, int mid, int right) {
+        int[] result = new int[right-left+1];
+        int i = left;
+        int j = mid+1;
+        int k = 0;
+        
+        while(i <= mid && j <= right) {
+            if(arr[i] <= arr[j]) {
+                result[k++] = arr[i++];
+            } else {
+                result[k++] = arr[j++];
+            }
+        }
+        
+        for(;i<=mid;i++,k++) { result[k] = arr[i]; }
+        for(;j<=right;j++,k++) { result[k] = arr[j]; }
+        
+        for(i=left;i<=right;i++) {
+            arr[i] = result[i-left];
+        }
+    }
 }
