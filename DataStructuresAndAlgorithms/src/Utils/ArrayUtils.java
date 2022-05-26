@@ -8,7 +8,7 @@ package Utils;
  *
  * @author yasir
  */
-public final class ArrayUtils<T> {
+public final class ArrayUtils<T extends Number> {
     
     public void swap(T[] array, int i, int j) {
         T temp = array[i];
@@ -25,7 +25,6 @@ public final class ArrayUtils<T> {
         
         return sum;
     }
-
     
     private int calculateUpperBoundForReverse(int from, int to) {
         return (from+to)/2;
