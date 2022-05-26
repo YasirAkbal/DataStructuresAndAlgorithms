@@ -43,7 +43,7 @@ public final class RadixSort {
         int j = 0;
         for(int i=0;i<bins.length;i++) {
             if(bins[i] != null) {
-                while(bins[i].size() > 0) {
+                while(!bins[i].isEmpty()) {
                     arr[j++] = (Integer)bins[i].remove(0);
                 }
             }

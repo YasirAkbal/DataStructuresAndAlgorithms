@@ -40,7 +40,7 @@ public final class BinBucketSort {
         int j = 0;
         for(int i=0;i<bucketArr.length;i++) {
             if(bucketArr[i] != null) {
-                while(bucketArr[i].size() > 0) {
+                while(!bucketArr[i].isEmpty()) {
                     arr[j++] = (Integer)bucketArr[i].remove(0);
                 }
             }

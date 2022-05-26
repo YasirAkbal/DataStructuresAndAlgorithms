@@ -87,7 +87,7 @@ public class Test {
         Integer[] zeroToN = {335,51235,1,0,5,14,1531,12,71,5};
         //CountingSort.countSort(zeroToN);
         //BinBucketSort.binBucketSort(zeroToN);
-        RadixSort.radixSort(zeroToN);
+        ShellSort.shellSort(zeroToN);
         utils.printArr(zeroToN);
     }
     
