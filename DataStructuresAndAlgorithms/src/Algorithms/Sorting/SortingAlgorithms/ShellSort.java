@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Algorithms.Sorting;
+package Algorithms.Sorting.SortingAlgorithms;
 
 /**
  *
@@ -14,7 +14,7 @@ public final class ShellSort {
     public static void shellSort(Integer[] arr) {
         int n = arr.length;
         
-        //insertion sort ama gap'li
+        //insertion sort ama gap'li. gap seçimi çok farklı şekillerde yapılabilir. burada her defasına 2'ye böldüm
         for(int gap=n/2;gap>=1;gap/=2) {
             for(int i=gap;i<n;i++) {
                 int x = arr[i];

@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Algorithms.Sorting;
+package Algorithms.Sorting.SortingAlgorithms;
 
 import Utils.ArrayUtils;
 import java.util.Arrays;
@@ -20,7 +20,7 @@ public final class RadixSort {
     public static void radixSort(Integer[] arr) {
         int n = arr.length;
         int max = CountingSort.findMax(arr);
-        int numberOfDigits = (int)(Math.log(max) / Math.log(BASE));
+        int numberOfDigits = (int)(Math.log(max) / Math.log(BASE))+1;
         LinkedList[] bins = new LinkedList[BASE];
         int power = 1;
         int index;

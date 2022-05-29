@@ -8,12 +8,13 @@
  * @author yasir
  */
 
+import Algorithms.Sorting.SortingAlgorithms.RadixSort;
 import Algorithms.Mathematical.*;
 import Algorithms.BitManipulation.*;
 import Algorithms.Recursive.*;
 import Algorithms.Arrays.*;
 import Algorithms.Searching.*;
-import Algorithms.Sorting.*;
+import Algorithms.Sorting.SortingAlgorithms.*;
 import Utils.ArrayUtils;
 import java.util.Arrays;
 
@@ -76,19 +77,21 @@ public class Test {
         //System.out.println(SquareRoot.efficientSolution(13));
         //System.out.println(TwoPointerApproach.isTripletSum(arr, 27));
         
-        //Integer[] arr = {351,4,31,6,20,3,10,5,1};
+        Integer[] arr = {5,3,7,5,11,3,7,8,6,7};
         //SelectionSort.run(arr);
-        //QuickSort.quickSort(arr);
+        QuickSort.quickSort(arr);
+        utils.printArr(arr);
         //utils.merge(arr, 0, 2, arr.length-1);
        
         /*MergeSort.iterative(arr);
         utils.printArr(arr);*/
         
-        Integer[] zeroToN = {335,51235,1,0,5,14,1531,12,71,5};
+        //Integer[] zeroToN = {335,51235,1,0,5,14,1531,12,71,5};
         //CountingSort.countSort(zeroToN);
         //BinBucketSort.binBucketSort(zeroToN);
-        ShellSort.shellSort(zeroToN);
-        utils.printArr(zeroToN);
+        //ShellSort.shellSort(zeroToN);
+        //RadixSort.radixSort(zeroToN);
+        //utils.printArr(zeroToN);
     }
     
 }

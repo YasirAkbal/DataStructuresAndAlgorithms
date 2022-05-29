@@ -8,15 +8,14 @@ package Utils;
  *
  * @author yasir
  */
-public final class ArrayUtils<T extends Number> {
-    
-    public void swap(T[] array, int i, int j) {
-        T temp = array[i];
+public class IntArrayUtils {
+     public void swap(int[] array, int i, int j) {
+        int temp = array[i];
         array[i] = array[j];
         array[j] = temp;
     }
     
-    public int sum(T[] arr) {
+    public int sum(int[] arr) {
         int sum = 0;
         
         for(int i=0;i<arr.length;i++) { 
@@ -30,39 +29,39 @@ public final class ArrayUtils<T extends Number> {
         return (from+to)/2;
     }
     
-    public void reverse(T[] arr) {
+    public void reverse(int[] arr) {
         _reverse(arr,0,arr.length,calculateUpperBoundForReverse(0, arr.length));
     }
     
-    public void reverse(T[] arr, int from) {
+    public void reverse(int[] arr, int from) {
         _reverse(arr,from,arr.length+from,calculateUpperBoundForReverse(from, arr.length));
     }
     
-    public void reverse(T[] arr, int from, int to) {
+    public void reverse(int[] arr, int from, int to) {
         _reverse(arr,from,to,calculateUpperBoundForReverse(from, to));
     }
     
-    private void _reverse(T[] arr, int from, int len, int upperBound) {
+    private void _reverse(int[] arr, int from, int len, int upperBound) {
         for(int i=from;i<upperBound;i++) {
             swap(arr,i,len-i-1);
         }
     }
     
-    public void printArr(T[] arr) {
+    public void printArr(int[] arr) {
         for(int i=0;i<arr.length;i++) {
             System.out.print(arr[i] + " ");
         }
         System.out.println();
     }
     
-    public void merge(Integer[] arr, int left, int mid, int right) {
+    public void merge(int[] arr, int left, int mid, int right) {
         int[] result = new int[right-left+1];
         int i = left;
         int j = mid+1;
         int k = 0;
         
         while(i <= mid && j <= right) {
-            if(arr[i] <= arr[j]) { // buradaki <= merge islemini stable yapiyor. 
+            if(arr[i] <= arr[j]) {
                 result[k++] = arr[i++];
             } else {
                 result[k++] = arr[j++];

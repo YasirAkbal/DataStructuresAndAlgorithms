@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Algorithms.Sorting;
+package Algorithms.Sorting.SortingAlgorithms;
 
 import Utils.ArrayUtils;
 
@@ -17,7 +17,7 @@ public final class MergeSort {
     
     public static void iterative(Integer[] arr) {
         int n = arr.length;
-        int left = 0, right = n-1;
+        int left, right;
         int mid;
         int p;
         
@@ -42,7 +42,7 @@ public final class MergeSort {
     private static void _recursive(Integer[] arr, int left, int right) {
         if(left >= right) { return; }
         
-        int mid = (left+right)/2;
+        int mid = (left+right)/2; // left + (right-left)/2 yazmak daha iyi. overflow oluşmasını engeller
         
         _recursive(arr,left,mid);
         _recursive(arr,mid+1,right);
