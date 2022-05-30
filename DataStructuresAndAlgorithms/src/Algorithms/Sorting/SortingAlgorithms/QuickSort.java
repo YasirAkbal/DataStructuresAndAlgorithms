@@ -22,9 +22,9 @@ public final class QuickSort {
     private static void _quickSort(Integer[] arr, int left, int right) {
         if(right - left < 1) { return; }
         
-        int partitionIndex = hoarePartition(arr, left, right);
+        int partitionIndex = partition(arr, left, right);
         
-        _quickSort(arr,left,partitionIndex); //orjinal hoare partition kullanılacaksa "_quickSort(arr,left,partitionIndex)" olmalı. Çünkü orjinalinde pivot sıralı konumunda değil.
+        _quickSort(arr,left,partitionIndex-1); //orjinal hoare partition kullanılacaksa "_quickSort(arr,left,partitionIndex)" olmalı. Çünkü orjinalinde pivot sıralı konumunda değil.
         _quickSort(arr,partitionIndex+1,right);
     }
     
@@ -39,7 +39,7 @@ public final class QuickSort {
     Swap sayısı Lomuto'ya göre daha az.
     Ortalama durumda en performanslı olan partition yöntemi.
     */
-    private static int hoarePartition(Integer[] arr, int left, int right) {
+    public static int hoarePartition(Integer[] arr, int left, int right) {
         int pivot = arr[left];
         int i = left - 1, j = right + 1;
  
@@ -69,8 +69,8 @@ public final class QuickSort {
     Stable -> Hayır.
     n boyutlu diziyi 1 defa bastan sona geziyor.
     */
-    private static int partition(Integer[] arr, int left, int right) {
-        int i=left+1;
+    public static int partition(Integer[] arr, int left, int right) {
+        int i=left;
         int j=right;
         int pivot = arr[left];
         
@@ -99,7 +99,7 @@ public final class QuickSort {
     n boyutlu diziyi 1 defa bastan sona geziyor.
     Swap sayısı fazla.
     */
-    private static int lomutoPartition(Integer[] arr, int left, int right) {
+    public static int lomutoPartition(Integer[] arr, int left, int right) {
         int i = left-1;
         int pivot = right;
         
@@ -122,7 +122,7 @@ public final class QuickSort {
     n boyutlu diziyi 4 defa bastan sona geziyor.
     Swap yok.
     */
-    private static int naivePartition(Integer[] arr, int left, int right) {
+    public static int naivePartition(Integer[] arr, int left, int right) {
         int[] temp = new int[right-left+1];
         int index = 0;
         int pivot = left;

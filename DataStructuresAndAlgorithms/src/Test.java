@@ -15,6 +15,7 @@ import Algorithms.Recursive.*;
 import Algorithms.Arrays.*;
 import Algorithms.Searching.*;
 import Algorithms.Sorting.SortingAlgorithms.*;
+import Algorithms.Sorting.SortingProblems.KthSmallestElement;
 import Utils.ArrayUtils;
 import java.util.Arrays;
 
@@ -77,10 +78,11 @@ public class Test {
         //System.out.println(SquareRoot.efficientSolution(13));
         //System.out.println(TwoPointerApproach.isTripletSum(arr, 27));
         
-        Integer[] arr = {5,3,7,5,11,3,7,8,6,7};
+        Integer[] arr = {2,5,7,1,4};
+        System.out.println(KthSmallestElement.solution(arr,3));
         //SelectionSort.run(arr);
-        QuickSort.quickSort(arr);
-        utils.printArr(arr);
+        //QuickSort.quickSort(arr);
+        //utils.printArr(arr);
         //utils.merge(arr, 0, 2, arr.length-1);
        
         /*MergeSort.iterative(arr);
