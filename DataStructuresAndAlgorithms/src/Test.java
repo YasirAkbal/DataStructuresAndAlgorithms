@@ -15,12 +15,18 @@ import Algorithms.Recursive.*;
 import Algorithms.Arrays.*;
 import Algorithms.Searching.*;
 import Algorithms.Sorting.SortingAlgorithms.*;
+import Algorithms.Sorting.SortingProblems.DutchNationalFlag;
 import Algorithms.Sorting.SortingProblems.KthSmallestElement;
+import Algorithms.Sorting.SortingProblems.MergeOverlappingIntervals;
+import Algorithms.Sorting.SortingProblems.SortArrayNegativeAndPositive;
 import Utils.ArrayUtils;
+import Utils.IntArrayUtils;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Test {
     private static ArrayUtils<Integer> utils = new ArrayUtils<>();
+    private static IntArrayUtils intUtil = new IntArrayUtils();
     /**
      * @param args the command line arguments
      */
@@ -78,12 +84,12 @@ public class Test {
         //System.out.println(SquareRoot.efficientSolution(13));
         //System.out.println(TwoPointerApproach.isTripletSum(arr, 27));
         
-        Integer[] arr = {2,5,7,1,4};
-        System.out.println(KthSmallestElement.solution(arr,3));
+        //Integer[] arr = {4,5,7,1,4,4,5,1,1,5,6,7};
+        //System.out.println(KthSmallestElement.solution(arr,3));
         //SelectionSort.run(arr);
-        //QuickSort.quickSort(arr);
+        //System.out.println(QuickSort.partitionWithCustomPivot(arr,0,arr.length-1,4));
         //utils.printArr(arr);
-        //utils.merge(arr, 0, 2, arr.length-1);
+
        
         /*MergeSort.iterative(arr);
         utils.printArr(arr);*/
@@ -94,6 +100,25 @@ public class Test {
         //ShellSort.shellSort(zeroToN);
         //RadixSort.radixSort(zeroToN);
         //utils.printArr(zeroToN);
+        
+        /*Integer[] negPos = {3,5,-13,15,-1,-17,35};
+        SortArrayNegativeAndPositive.efficientSolution(negPos);
+        util.printArr(negPos);*/
+        
+        /*int[] arr = {0,3,5,2,1,0,11,1,13};
+        DutchNationalFlag.solution(arr);
+        intUtil.printArr(arr);*/
+        
+        /*int[][] intervals = {{7,9},{6,10},{4,5},{1,3},{2,4}};
+        ArrayList<int[]> result = MergeOverlappingIntervals.solution(intervals);
+        for(int[] arr : result) {
+            System.out.println("left = " + arr[0] + ", right = " + arr[1]);
+        }*/
+        
+        int[] arr = {3,5,-13,15,-1,-17,35};
+        CycleSort.cycleSort(arr);
+        intUtil.printArr(arr);
+        
     }
     
 }

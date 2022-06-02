@@ -15,8 +15,7 @@ public final class KthSmallestElement {
     
     
     /*
-    Time Complexity -> BigO(n*log(k))
-    Auxiliary Space -> BigO(k) -> Rekürsiyon stacktan kaynaklu
+    Time Complexity: O(n^2) , Average -> BigTheta(n)
     */
     public static int solution(Integer[] arr, int k) {
         int left = 0;

@@ -153,4 +153,23 @@ public final class QuickSort {
         
         return partitionIndex;
     }
+    
+    
+    //Başka problemleri çözmek için pivot elemanını parametre olarak alıyor. Yukarıdaki metotlardan farkı yok.
+    public static int partitionWithCustomPivot(Integer[] arr, int left, int right, int pivot) {
+        int i=left;
+        int j=right;
+ 
+        while(i < j) {
+            while(i <= right && arr[i] <= pivot) { i++; }
+            while(j > 0 && arr[j] > pivot) { j--; }
+            
+            if(i < j) {
+                util.swap(arr, i, j);
+            }
+        }
+        
+        
+        return j;
+    }
 }
