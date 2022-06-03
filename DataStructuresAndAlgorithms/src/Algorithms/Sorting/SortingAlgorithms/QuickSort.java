@@ -155,7 +155,7 @@ public final class QuickSort {
     }
     
     
-    //Başka problemleri çözmek için pivot elemanını parametre olarak alıyor. Yukarıdaki metotlardan farkı yok.
+    //Başka problemlerde kullanılabilmek için pivot elemanını parametre olarak alıyor.
     public static int partitionWithCustomPivot(Integer[] arr, int left, int right, int pivot) {
         int i=left;
         int j=right;

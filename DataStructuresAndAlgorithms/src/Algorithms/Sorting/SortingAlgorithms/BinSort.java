@@ -15,8 +15,8 @@ import java.util.LinkedList;
 /*
 Count Sort'a benziyor. Ondan farklı olarak (max+1) elemanlı dizide count(integer) tutmak yerine LinkedList tutuyoruz.
 */
-public final class BinBucketSort {
-    private BinBucketSort() {}
+public final class BinSort {
+    private BinSort() {}
     
     
     /*
@@ -24,7 +24,7 @@ public final class BinBucketSort {
     TimeComplexity -> BigTheta(n+max), max -> dizideki en büyük eleman
     Auxiliary Space -> BigTheta(max)
     */
-    public static void binBucketSort(Integer[] arr) {
+    public static void binSort(Integer[] arr) {
         int n = arr.length;
         int max = CountingSort.findMax(arr);
         LinkedList[] bucketArr = new LinkedList[max+1];

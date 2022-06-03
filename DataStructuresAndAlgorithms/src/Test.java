@@ -95,10 +95,10 @@ public class Test {
         utils.printArr(arr);*/
         
         //Integer[] zeroToN = {335,51235,1,0,5,14,1531,12,71,5};
-        //CountingSort.countSort(zeroToN);
+        //CountingSort.countSortGeneral(zeroToN);
         //BinBucketSort.binBucketSort(zeroToN);
         //ShellSort.shellSort(zeroToN);
-        //RadixSort.radixSort(zeroToN);
+        //RadixSort.radixSortWithCS(zeroToN);
         //utils.printArr(zeroToN);
         
         /*Integer[] negPos = {3,5,-13,15,-1,-17,35};
@@ -115,8 +115,12 @@ public class Test {
             System.out.println("left = " + arr[0] + ", right = " + arr[1]);
         }*/
         
-        int[] arr = {3,5,-13,15,-1,-17,35};
+        /*int[] arr = {50,40,30,20,10};
         CycleSort.cycleSort(arr);
+        intUtil.printArr(arr);*/
+        
+        int[] arr = {20,80,10,85,75,100,18};
+        BucketSort.bucketSort(arr, 5);
         intUtil.printArr(arr);
         
     }

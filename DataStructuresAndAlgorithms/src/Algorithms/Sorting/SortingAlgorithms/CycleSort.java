@@ -4,6 +4,8 @@
  */
 package Algorithms.Sorting.SortingAlgorithms;
 
+import Utils.IntArrayUtils;
+
 /**
  *
  * @author yasir
@@ -11,6 +13,7 @@ package Algorithms.Sorting.SortingAlgorithms;
 public final class CycleSort {
     private CycleSort() {}
     
+    private static IntArrayUtils util = new IntArrayUtils();
     
     /*
     Time Complexity -> BigTheta(n) -> (Tüm Durumlarda)
