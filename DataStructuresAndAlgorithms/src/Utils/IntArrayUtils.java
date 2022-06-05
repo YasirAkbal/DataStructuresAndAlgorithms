@@ -95,4 +95,10 @@ public class IntArrayUtils {
         }
         return min;
     } 
+    
+    public static void swap(int[][] arr, int i, int j) {
+        int temp = arr[i][j];
+        arr[i][j] = arr[j][i];
+        arr[j][i] = temp;
+    }
 }
