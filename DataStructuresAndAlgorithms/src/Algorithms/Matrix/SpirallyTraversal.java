@@ -31,8 +31,7 @@ public class SpirallyTraversal {
         
         if(rowStart < rowEnd && colStart < colEnd) {
             boundaryTraversel(arrList,matrix,rowStart,rowEnd,colStart,colEnd);
-        }
-        else if(rowStart == rowEnd) {
+        } else if(rowStart == rowEnd) {
             for(int j=colStart;j<=colEnd;j++)
                 arrList.add(matrix[rowStart][j]);
         } else if(colStart == colEnd){

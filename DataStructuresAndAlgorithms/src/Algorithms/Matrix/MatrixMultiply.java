@@ -11,8 +11,7 @@ package Algorithms.Matrix;
 public final class MatrixMultiply {
     private MatrixMultiply() {}
     
-    static int[][] multiplyMatrix(int A[][], int B[][])
-    {
+    static int[][] multiplyMatrix(int A[][], int B[][]) {
         int aN = A.length;
         int aM = A[0].length;
         int bN = B.length;
