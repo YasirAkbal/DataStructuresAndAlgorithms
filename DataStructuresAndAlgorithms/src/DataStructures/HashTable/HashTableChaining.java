@@ -5,69 +5,114 @@
 package DataStructures.HashTable;
 
 import java.lang.reflect.Array;
+import java.util.Iterator;
 import java.util.LinkedList;
 
 /**
  *
  * @author yasir
  */
-public class HashTableChaining<T> implements IHashTable<T> {
+public class HashTableChaining<K,V> implements IHashTable<K,V> {
     private int capacity;
-    private double loadFactor;
-    private LinkedList<T>[] hashTable;
+    private int size;
+    private LinkedList<HashNodeChain<K,V>>[] hashTable;
     
-    public HashTableChaining(int capacity, double loadFactor) {
+    public HashTableChaining(int capacity) {
         this.capacity = capacity;
-        this.loadFactor = loadFactor;
-        this.hashTable = (LinkedList<T>[])Array.newInstance(LinkedList.class, capacity);
+        this.size = 0;
+        this.hashTable = (LinkedList<HashNodeChain<K,V>>[])Array.newInstance(LinkedList.class, capacity);
     }
     
     @Override
-    public int hashFunc(T item) {
-        if(item.getClass() == int.class || item.getClass() == Integer.class) {
-            int intVal = (int)item;
-            return intVal%capacity;
+    public int hashFunc(K key) {
+        if(key.getClass() == int.class || key.getClass() == Integer.class) {
+            int intVal = (int)key;
+            return intVal%capacity; //capacity'i asal sayı seçmekte fayda var
         } else { //diğer tipler için de oluşturulabilir.
-            return item.hashCode();
+            return key.hashCode();
         }
     }
     
     @Override
-    public boolean search(T item) {
-        int hash = this.hashFunc(item);
+    public boolean containsKey(K key) {
+        int hash = this.hashFunc(key);
         
-        if(hashTable[hash] == null) { return false; }
+        if(this.hashTable[hash] == null) { return false; }
         
-        LinkedList<T> list = hashTable[hash];
-        //return list.contains(item);
-        for(T elem : list) { 
-            if(elem == item) { return true; }
+        final LinkedList<HashNodeChain<K,V>> list = hashTable[hash];
+        
+        for(HashNodeChain<K,V> elem : list) { 
+            if(elem.key == key) { return true; }
         }
 
         return false;
     }
 
     @Override
-    public void insert(T item) {
-        int hash = this.hashFunc(item);
+    public boolean insert(K key, V val) {      
+        int hash = this.hashFunc(key);
         
-        if(hashTable[hash] == null) {
-            hashTable[hash] = new LinkedList<T>();
+        if(this.hashTable[hash] == null) { //hash'e karsilik gelen gozde daha once linkledlist olusturulmamis
+            this.hashTable[hash] = new LinkedList<HashNodeChain<K,V>>();
         }
         
-        hashTable[hash].add(item);
+        if(!this.containsValueInLL(val, hash)) { //eklenecek item daha once eklenmemis
+            this.hashTable[hash].add(new HashNodeChain<K,V>(key,val));
+            this.size++;
+            return true;
+        } else { //eklenecek item daha once eklenmis
+            return false;
+        }
     }
 
     @Override
-    public void delete(T item) {
-        int hash = this.hashFunc(item);
+    public V delete(K key) {
+        int hash = this.hashFunc(key);
         
-        if(hashTable[hash] != null) {
-            /*if(!this.search(item)) {
-                throw item not found falan
-            }*/
-            hashTable[hash].remove(item);
+        if(this.hashTable[hash] != null) {
+            LinkedList<HashNodeChain<K,V>> list = hashTable[hash];
+
+            Iterator<HashNodeChain<K,V>> itr = hashTable[hash].iterator();
+            int i=0;
+            while(itr.hasNext()) {
+                if(itr.next().key == key) {
+                    HashNodeChain<K,V> deleted = list.remove(i);
+                    size--;
+                    return deleted.value;
+                }
+                i++;
+            }
         }
+        
+        return null;
+    }
+    
+    
+    private boolean containsValueInLL(V val, int hash) {
+        final LinkedList<HashNodeChain<K,V>> list = this.hashTable[hash];
+        
+        for(HashNodeChain<K,V> node : list) {
+            if(node.value == val)
+                return true;
+        }
+        
+        return false;
+    }
+
+    @Override
+    public V getItem(K key) {
+        int hash = this.hashFunc(key);
+        
+        if(this.hashTable[hash] == null) { return null; }
+        
+        final LinkedList<HashNodeChain<K,V>> list = this.hashTable[hash];
+        for(HashNodeChain<K,V> node : list) {
+            if(node.key == key) {
+                return node.value;
+            }
+        }
+        
+        return null;
     }
 
     @Override
@@ -76,7 +121,7 @@ public class HashTableChaining<T> implements IHashTable<T> {
     }
 
     @Override
-    public double getLoadFactor() {
-        return this.loadFactor;
+    public int getSize() {
+        return this.size;
     }
 }

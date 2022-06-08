@@ -124,15 +124,16 @@ public class Test {
         BucketSort.bucketSort(arr, 5);
         intUtil.printArr(arr);*/
         
-        HashTableChaining<Integer> table = new HashTableChaining<>(20,0.5);
-        table.insert(15);
-        table.insert(13);
-        table.insert(35);
+        HashTableChaining<Integer,String> table = new HashTableChaining<>(20);
+        table.insert(15,"onbes");
+        table.insert(13,"onuc");
+        table.insert(35,"otuzbes");
         
         
-        System.out.println(table.search(35));
-        table.delete(35);
-        System.out.println(table.search(35));
+        System.out.println(table.containsKey(15));
+        System.out.println(table.delete(15));
+        System.out.println(table.containsKey(15));
+        System.out.println(table.getItem(35));
     }
     
 }
