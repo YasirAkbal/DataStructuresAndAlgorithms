@@ -19,11 +19,15 @@ import Algorithms.Sorting.SortingProblems.DutchNationalFlag;
 import Algorithms.Sorting.SortingProblems.KthSmallestElement;
 import Algorithms.Sorting.SortingProblems.MergeOverlappingIntervals;
 import Algorithms.Sorting.SortingProblems.SortArrayNegativeAndPositive;
-import DataStructures.HashTable.HashTableChaining;
+import DataStructures.HashTable.Classes.HashNode;
+import DataStructures.HashTable.Classes.HashTableChaining;
+import DataStructures.HashTable.Classes.HashTableLinProb;
 import Utils.ArrayUtils;
 import Utils.IntArrayUtils;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Iterator;
 
 public class Test {
     private static ArrayUtils<Integer> utils = new ArrayUtils<>();
@@ -124,16 +128,41 @@ public class Test {
         BucketSort.bucketSort(arr, 5);
         intUtil.printArr(arr);*/
         
-        HashTableChaining<Integer,String> table = new HashTableChaining<>(20);
+        /*HashTableChaining<Integer,String> table = new HashTableChaining<>(20);
         table.insert(15,"onbes");
         table.insert(13,"onuc");
         table.insert(35,"otuzbes");
         
-        
         System.out.println(table.containsKey(15));
         System.out.println(table.delete(15));
         System.out.println(table.containsKey(15));
+        System.out.println(table.getItem(35));*/
+        
+        HashTableLinProb<Integer,String> table = new HashTableLinProb<>(6,0.5);
+        table.insert(15,"onbes");
+        table.insert(13,"onuc");
+        table.insert(35,"otuzbes");
+        table.insert(55,"ellibes");
+        table.insert(91,"doksanbir");
+        
+        System.out.println(table.containsKey(35));
+        System.out.println(table.insert(35,"otuzbes"));
+        System.out.println(table.delete(35));
+        System.out.println(table.insert(35,"otuzbes"));
+        System.out.println(table.containsKey(35));
         System.out.println(table.getItem(35));
+        
+        System.out.println(table.resizeHashTable(15));
+        
+        for (HashNode<Integer,String> node : table) {
+            System.out.println("Key = " + node.key + ", Value = " + node.value);
+        }
+        
+        HashSet<Integer> setA = new HashSet<>();
+        HashSet<Integer> setB = new HashSet<>();
+        
+        setA.retainAll(setB);
+   
     }
     
 }

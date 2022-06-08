@@ -2,8 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package DataStructures.HashTable;
+package DataStructures.HashTable.Classes;
 
+import DataStructures.HashTable.Interfaces.IHashTable;
 import java.lang.reflect.Array;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -15,12 +16,12 @@ import java.util.LinkedList;
 public class HashTableChaining<K,V> implements IHashTable<K,V> {
     private int capacity;
     private int size;
-    private LinkedList<HashNodeChain<K,V>>[] hashTable;
+    private LinkedList<HashNode<K,V>>[] hashTable;
     
     public HashTableChaining(int capacity) {
         this.capacity = capacity;
         this.size = 0;
-        this.hashTable = (LinkedList<HashNodeChain<K,V>>[])Array.newInstance(LinkedList.class, capacity);
+        this.hashTable = (LinkedList<HashNode<K,V>>[])Array.newInstance(LinkedList.class, capacity);
     }
     
     @Override
@@ -39,9 +40,9 @@ public class HashTableChaining<K,V> implements IHashTable<K,V> {
         
         if(this.hashTable[hash] == null) { return false; }
         
-        final LinkedList<HashNodeChain<K,V>> list = hashTable[hash];
+        final LinkedList<HashNode<K,V>> list = hashTable[hash];
         
-        for(HashNodeChain<K,V> elem : list) { 
+        for(HashNode<K,V> elem : list) { 
             if(elem.key == key) { return true; }
         }
 
@@ -53,11 +54,11 @@ public class HashTableChaining<K,V> implements IHashTable<K,V> {
         int hash = this.hashFunc(key);
         
         if(this.hashTable[hash] == null) { //hash'e karsilik gelen gozde daha once linkledlist olusturulmamis
-            this.hashTable[hash] = new LinkedList<HashNodeChain<K,V>>();
+            this.hashTable[hash] = new LinkedList<HashNode<K,V>>();
         }
         
         if(!this.containsValueInLL(val, hash)) { //eklenecek item daha once eklenmemis
-            this.hashTable[hash].add(new HashNodeChain<K,V>(key,val));
+            this.hashTable[hash].add(new HashNode<K,V>(key,val,hash));
             this.size++;
             return true;
         } else { //eklenecek item daha once eklenmis
@@ -70,13 +71,13 @@ public class HashTableChaining<K,V> implements IHashTable<K,V> {
         int hash = this.hashFunc(key);
         
         if(this.hashTable[hash] != null) {
-            LinkedList<HashNodeChain<K,V>> list = hashTable[hash];
+            LinkedList<HashNode<K,V>> list = hashTable[hash];
 
-            Iterator<HashNodeChain<K,V>> itr = hashTable[hash].iterator();
+            Iterator<HashNode<K,V>> itr = hashTable[hash].iterator();
             int i=0;
             while(itr.hasNext()) {
                 if(itr.next().key == key) {
-                    HashNodeChain<K,V> deleted = list.remove(i);
+                    HashNode<K,V> deleted = list.remove(i);
                     size--;
                     return deleted.value;
                 }
@@ -89,9 +90,9 @@ public class HashTableChaining<K,V> implements IHashTable<K,V> {
     
     
     private boolean containsValueInLL(V val, int hash) {
-        final LinkedList<HashNodeChain<K,V>> list = this.hashTable[hash];
+        final LinkedList<HashNode<K,V>> list = this.hashTable[hash];
         
-        for(HashNodeChain<K,V> node : list) {
+        for(HashNode<K,V> node : list) {
             if(node.value == val)
                 return true;
         }
@@ -105,8 +106,8 @@ public class HashTableChaining<K,V> implements IHashTable<K,V> {
         
         if(this.hashTable[hash] == null) { return null; }
         
-        final LinkedList<HashNodeChain<K,V>> list = this.hashTable[hash];
-        for(HashNodeChain<K,V> node : list) {
+        final LinkedList<HashNode<K,V>> list = this.hashTable[hash];
+        for(HashNode<K,V> node : list) {
             if(node.key == key) {
                 return node.value;
             }
