@@ -19,6 +19,7 @@ import Algorithms.Sorting.SortingProblems.DutchNationalFlag;
 import Algorithms.Sorting.SortingProblems.KthSmallestElement;
 import Algorithms.Sorting.SortingProblems.MergeOverlappingIntervals;
 import Algorithms.Sorting.SortingProblems.SortArrayNegativeAndPositive;
+import DataStructures.HashTable.HashTableChaining;
 import Utils.ArrayUtils;
 import Utils.IntArrayUtils;
 import java.util.ArrayList;
@@ -119,10 +120,19 @@ public class Test {
         CycleSort.cycleSort(arr);
         intUtil.printArr(arr);*/
         
-        int[] arr = {20,80,10,85,75,100,18};
+        /*int[] arr = {20,80,10,85,75,100,18};
         BucketSort.bucketSort(arr, 5);
-        intUtil.printArr(arr);
+        intUtil.printArr(arr);*/
         
+        HashTableChaining<Integer> table = new HashTableChaining<>(20,0.5);
+        table.insert(15);
+        table.insert(13);
+        table.insert(35);
+        
+        
+        System.out.println(table.search(35));
+        table.delete(35);
+        System.out.println(table.search(35));
     }
     
 }
