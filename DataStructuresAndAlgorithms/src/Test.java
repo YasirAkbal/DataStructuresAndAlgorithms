@@ -13,6 +13,7 @@ import Algorithms.Mathematical.*;
 import Algorithms.BitManipulation.*;
 import Algorithms.Recursive.*;
 import Algorithms.Arrays.*;
+import Algorithms.HashTable.LongestSubArrayWithGivenSum;
 import Algorithms.Searching.*;
 import Algorithms.Sorting.SortingAlgorithms.*;
 import Algorithms.Sorting.SortingProblems.DutchNationalFlag;
@@ -138,7 +139,7 @@ public class Test {
         System.out.println(table.containsKey(15));
         System.out.println(table.getItem(35));*/
         
-        HashTableLinProb<Integer,String> table = new HashTableLinProb<>(6,0.5);
+        /*HashTableLinProb<Integer,String> table = new HashTableLinProb<>(6,0.5);
         table.insert(15,"onbes");
         table.insert(13,"onuc");
         table.insert(35,"otuzbes");
@@ -157,12 +158,10 @@ public class Test {
         for (HashNode<Integer,String> node : table) {
             System.out.println("Key = " + node.key + ", Value = " + node.value);
         }
+        */
         
-        HashSet<Integer> setA = new HashSet<>();
-        HashSet<Integer> setB = new HashSet<>();
-        
-        setA.retainAll(setB);
-   
+        int[] arr = {8, 3, 7};
+        System.out.println(LongestSubArrayWithGivenSum.solution(arr, 7));
     }
     
 }

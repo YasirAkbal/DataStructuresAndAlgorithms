@@ -126,8 +126,8 @@ public class HashTableLinProb<K,V> implements IHashTable<K,V>, IOpenHashing, Ite
     public boolean resizeHashTable(int newCap) {
         if(newCap < size) { return false; }
         
-        HashNode<K,V>[] tempHashTable = this.hashTable.clone();
-        boolean[] tempDummyTable = this.dummyTable.clone();
+        HashNode<K,V>[] tempHashTable = this.hashTable;
+        boolean[] tempDummyTable = this.dummyTable;
         this.hashTable = (HashNode<K,V>[])Array.newInstance(HashNode.class, newCap);
         this.dummyTable = new boolean[newCap];
         this.capacity = newCap;
