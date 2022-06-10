@@ -13,6 +13,7 @@ import Algorithms.Mathematical.*;
 import Algorithms.BitManipulation.*;
 import Algorithms.Recursive.*;
 import Algorithms.Arrays.*;
+import Algorithms.HashTable.LongestCommonSubarrayWithGivenSum;
 import Algorithms.HashTable.LongestSubArrayWithGivenSum;
 import Algorithms.Searching.*;
 import Algorithms.Sorting.SortingAlgorithms.*;
@@ -160,8 +161,18 @@ public class Test {
         }
         */
         
-        int[] arr = {8, 3, 7};
-        System.out.println(LongestSubArrayWithGivenSum.solution(arr, 7));
+        /*int[] arr = {8, 3, 7};
+        System.out.println(LongestSubArrayWithGivenSum.solution(arr, 7));*/
+        
+        /*int[] arr1 = {0,0,0};
+        int[] arr2 = {1,1,1};
+        
+        System.out.println(LongestCommonSubarrayWithGivenSum.solution(arr1, arr2));
+        System.out.println(LongestCommonSubarrayWithGivenSum.efficientSolution(arr1, arr2));*/
+        
+        String s1 = "selam";
+        String s2 = "selam";
+        System.out.println(s1==s2);
     }
     
 }
