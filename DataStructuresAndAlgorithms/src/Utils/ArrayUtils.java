@@ -8,7 +8,7 @@ package Utils;
  *
  * @author yasir
  */
-public final class ArrayUtils<T extends Number> {
+public final class ArrayUtils<T> {
     
     public void swap(T[] array, int i, int j) {
         T temp = array[i];

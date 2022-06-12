@@ -14,7 +14,6 @@ import java.util.HashMap;
  */
 public class SortArraybyIncreasingFrequency {
     public int[] frequencySort(int[] arr) {
-        int n = arr.length;
         HashMap<Integer,Node> map = new HashMap<>();
         Node node;
         

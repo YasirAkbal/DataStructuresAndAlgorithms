@@ -21,6 +21,12 @@ import Algorithms.Sorting.SortingProblems.DutchNationalFlag;
 import Algorithms.Sorting.SortingProblems.KthSmallestElement;
 import Algorithms.Sorting.SortingProblems.MergeOverlappingIntervals;
 import Algorithms.Sorting.SortingProblems.SortArrayNegativeAndPositive;
+import Algorithms.Strings.Anagram;
+import Algorithms.Strings.CheckStringSubSeqAnother;
+import Algorithms.Strings.LeftMostNonRepeatingElement;
+import Algorithms.Strings.LeftMostRepatingCharacter;
+import Algorithms.Strings.PatternSearch;
+import Algorithms.Strings.ReverseWordsInString;
 import DataStructures.HashTable.Classes.HashNode;
 import DataStructures.HashTable.Classes.HashTableChaining;
 import DataStructures.HashTable.Classes.HashTableLinProb;
@@ -30,6 +36,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.stream.Collectors;
 
 public class Test {
     private static ArrayUtils<Integer> utils = new ArrayUtils<>();
@@ -170,9 +177,27 @@ public class Test {
         System.out.println(LongestCommonSubarrayWithGivenSum.solution(arr1, arr2));
         System.out.println(LongestCommonSubarrayWithGivenSum.efficientSolution(arr1, arr2));*/
         
-        String s1 = "selam";
-        String s2 = "selam";
-        System.out.println(s1==s2);
+        //System.out.println(CheckStringSubSeqAnother.solution("ABCDEF", "ABCDEF"));
+        /*System.out.println(Anagram.solution1("selam", "elmas"));
+        System.out.println(Anagram.solution2("selam", "elmas"));
+        System.out.println(Anagram.solution3("selam", "elmas"));*/
+        
+        //System.out.println(LeftMostRepatingCharacter.solution3("hbcdac"));
+        
+        /*System.out.println(LeftMostNonRepeatingElement.solution1("aabcd"));
+        System.out.println(LeftMostNonRepeatingElement.solution2("aabcd"));*/
+   
+        /*String s = "selam ben yasir";
+        char[] sArr = s.toCharArray();
+        System.out.println(ReverseWordsInString.solution(s));
+        
+        ReverseWordsInString.efficientSolution(sArr);
+        System.out.println(new String(sArr));*/
+        
+        ArrayList<Integer> indexes = PatternSearch.rabinKarpAlgorithm("selam el aa", "el");
+        for(int i: indexes) {
+            System.out.print(i + " ");
+        }
     }
     
 }
