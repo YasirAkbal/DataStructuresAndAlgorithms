@@ -5,6 +5,7 @@
 package Algorithms.Strings;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 
 /**
  *
@@ -80,7 +81,7 @@ public class PatternSearch {
     /*
     Time Complexity -> O((n-m+1)*m)
     *Worst Case -> BigTheta((n-m+1)*m) -> Kötü bir hash fonksiyonu ve pattern'nin tekrar ettiği durumlarda. Worst case'de naive'den daha yavaş çalışır(ektsra hash hesaplamaları nedeniyle)
-    *Average and Best Cese -> BigTheta(n+m)
+    *Average and Best Case -> BigTheta(n+m)
     */
     private static final int mod = 101;
     private static final int d = 256;
@@ -117,6 +118,42 @@ public class PatternSearch {
                     windowHash += mod;
             }
         }
+        
+        return result;
+    }
+    
+    
+    public static ArrayList<Integer> constructLPSArray(String str) {
+        ArrayList<Integer> result = new ArrayList<>();
+        result.add(0);
+        
+        HashSet<String> properPre = new HashSet<>();
+        String lastProper = "";
+        
+        HashSet<String> suffix = new HashSet<>();
+        suffix.add(""+str.charAt(0));
+        
+        int max;
+        for(int i=1;i<str.length();i++) {
+           max = 0;
+           lastProper += str.charAt(i-1);
+           properPre.add(lastProper);
+           
+           for(String s: suffix.toArray(String[]::new)) {
+               suffix.remove(s);
+               suffix.add(s+str.charAt(i));
+           }
+           suffix.add(""+str.charAt(i));
+           
+           for(String s: properPre) {
+               if(suffix.contains(s)) {
+                   max = Math.max(max,s.length());
+               }
+           }
+
+           result.add(max);
+       }
+        
         
         return result;
     }

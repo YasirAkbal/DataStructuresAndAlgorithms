@@ -47,7 +47,7 @@ public class Anagram {
         return true;
     }
     
-    //Çözüm 2'den tek farkı for döngülerinde yapılan işlemler
+    //Çözüm 2'den tek farkı for döngülerinde yapılan işlemler.
     //Daha verimli
     public static boolean solution3(String s1, String s2) {
         if(s1.length() != s2.length())

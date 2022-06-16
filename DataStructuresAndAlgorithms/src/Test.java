@@ -22,6 +22,7 @@ import Algorithms.Sorting.SortingProblems.KthSmallestElement;
 import Algorithms.Sorting.SortingProblems.MergeOverlappingIntervals;
 import Algorithms.Sorting.SortingProblems.SortArrayNegativeAndPositive;
 import Algorithms.Strings.Anagram;
+import Algorithms.Strings.AnagramSearch;
 import Algorithms.Strings.CheckStringSubSeqAnother;
 import Algorithms.Strings.LeftMostNonRepeatingElement;
 import Algorithms.Strings.LeftMostRepatingCharacter;
@@ -194,10 +195,17 @@ public class Test {
         ReverseWordsInString.efficientSolution(sArr);
         System.out.println(new String(sArr));*/
         
-        ArrayList<Integer> indexes = PatternSearch.rabinKarpAlgorithm("selam el aa", "el");
+        /*ArrayList<Integer> indexes = PatternSearch.rabinKarpAlgorithm("selam el aa", "el");
         for(int i: indexes) {
             System.out.print(i + " ");
-        }
+        }*/
+        
+        /*ArrayList<Integer> indexes = PatternSearch.constructLPSArray("abbabb");
+        for(int i: indexes) {
+            System.out.print(i + " ");
+        }*/
+        
+        System.out.println(AnagramSearch.naiveSolution("geeksforgeeks", "frof"));
     }
     
 }
