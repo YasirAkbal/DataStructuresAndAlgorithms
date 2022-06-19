@@ -4,8 +4,8 @@
  */
 package DataStructures.HashTable.Classes;
 
-import DataStructures.HashTable.Interfaces.IOpenHashing;
-import DataStructures.HashTable.Interfaces.IHashTable;
+import DataStructures.HashTable.Abstract.IOpenHashing;
+import DataStructures.HashTable.Abstract.IHashTable;
 import java.lang.reflect.Array;
 import java.util.Iterator;
 

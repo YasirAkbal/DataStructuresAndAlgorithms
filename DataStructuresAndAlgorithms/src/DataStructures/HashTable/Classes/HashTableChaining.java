@@ -4,7 +4,7 @@
  */
 package DataStructures.HashTable.Classes;
 
-import DataStructures.HashTable.Interfaces.IHashTable;
+import DataStructures.HashTable.Abstract.IHashTable;
 import java.lang.reflect.Array;
 import java.util.Iterator;
 import java.util.LinkedList;

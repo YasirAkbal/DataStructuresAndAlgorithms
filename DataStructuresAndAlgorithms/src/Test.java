@@ -31,6 +31,9 @@ import Algorithms.Strings.ReverseWordsInString;
 import DataStructures.HashTable.Classes.HashNode;
 import DataStructures.HashTable.Classes.HashTableChaining;
 import DataStructures.HashTable.Classes.HashTableLinProb;
+import DataStructures.LinkedLists.Abstract.ILinkedList;
+import DataStructures.LinkedLists.DoublyCircularLinkedList;
+import DataStructures.LinkedLists.SingleLinkedList;
 import Utils.ArrayUtils;
 import Utils.IntArrayUtils;
 import java.util.ArrayList;
@@ -205,7 +208,36 @@ public class Test {
             System.out.print(i + " ");
         }*/
         
-        System.out.println(AnagramSearch.naiveSolution("geeksforgeeks", "frof"));
+        //System.out.println(AnagramSearch.naiveSolution("geeksforgeeks", "frof"));
+        
+        SingleLinkedList<Integer> mySLL = new SingleLinkedList<>();
+        DoublyCircularLinkedList<Integer> myDCLL = new DoublyCircularLinkedList<>();
+        LLTestCases(mySLL);
+        System.out.println("<---------------------->");
+        LLTestCases(myDCLL);
     }
     
+    private static void LLTestCases(ILinkedList<Integer> llist) {
+        llist.addLast(3);
+        llist.addLast(35);
+        llist.insert(2, -13);
+        llist.addLast(11);
+        llist.addFirst(31);
+        
+        llist.printAll();
+        System.out.println(llist.contains(3));
+        System.out.println(llist.get(6));
+        System.out.println(llist.isEmpty());
+        System.out.println(llist.getFirst());
+        System.out.println(llist.getLast());
+        System.out.println(llist.search(-13));
+        System.out.println(llist.removeFirst());
+        llist.printAll();
+        System.out.println(llist.removeLast());
+        llist.printAll();
+        System.out.println(llist.remove(2));
+        System.out.println(llist.removeLast());
+        System.out.println(llist.removeFirst());
+        llist.printAll();
+    }
 }
