@@ -115,7 +115,8 @@ public class HashTableLinProb<K,V> implements IHashTable<K,V>, IOpenHashing, Ite
             if(this.hashTable[hash].key == key && !this.dummyTable[hash]) { 
                 return hash;
             }
-            hash = (hash + (++i))%this.capacity;
+            hash = (hash + 1)%this.capacity;
+            i++;
         }
         
         return -1;

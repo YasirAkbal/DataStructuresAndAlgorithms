@@ -12,7 +12,7 @@ public class InsertMiddleOfLL {
     /*
     1 kere traversal yaparak bu işlemi gerçekleştirebiliriz.
     */
-    public SingleNode insertInMid(SingleNode head, int data){
+    SingleNode insertInMid(SingleNode head, int data){
         if(head == null) return new SingleNode(data);
         
         SingleNode fast = head;

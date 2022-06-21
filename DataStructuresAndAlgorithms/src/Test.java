@@ -28,6 +28,7 @@ import Algorithms.Strings.LeftMostNonRepeatingElement;
 import Algorithms.Strings.LeftMostRepatingCharacter;
 import Algorithms.Strings.PatternSearch;
 import Algorithms.Strings.ReverseWordsInString;
+import DataStructures.DynamicArray.DynamicArray;
 import DataStructures.HashTable.Classes.HashNode;
 import DataStructures.HashTable.Classes.HashTableChaining;
 import DataStructures.HashTable.Classes.HashTableLinProb;
@@ -210,11 +211,25 @@ public class Test {
         
         //System.out.println(AnagramSearch.naiveSolution("geeksforgeeks", "frof"));
         
-        SingleLinkedList<Integer> mySLL = new SingleLinkedList<>();
+        /*SingleLinkedList<Integer> mySLL = new SingleLinkedList<>();
         DoublyCircularLinkedList<Integer> myDCLL = new DoublyCircularLinkedList<>();
         LLTestCases(mySLL);
         System.out.println("<---------------------->");
-        LLTestCases(myDCLL);
+        LLTestCases(myDCLL);*/
+        
+        DynamicArray<Integer> dynArr = new DynamicArray<>(3);
+        dynArr.append(2);
+        dynArr.append(23);
+        dynArr.append(52);
+        dynArr.append(153);
+        dynArr.remove(2);
+        dynArr.insert(2, 52);
+        
+        for(Integer i: dynArr) {
+            System.out.print(i + " ");
+        }
+        System.out.println();
+        System.out.println(dynArr.size());
     }
     
     private static void LLTestCases(ILinkedList<Integer> llist) {
