@@ -16,27 +16,27 @@ public final class DynamicArray<T> implements IDynamicArray<T>, Iterable<T> {
     private T[] arr;
     private static final int DEFAULT_CAPACITY = 16;
     
-    public DynamicArray() {
-        this.arr = (T[])Array.newInstance(Object.class, DEFAULT_CAPACITY);
+    public DynamicArray(Class<T> clazz) {
+        this.arr = (T[])Array.newInstance(clazz, DEFAULT_CAPACITY);
         this.capacity = DEFAULT_CAPACITY;
     }
     
-    public DynamicArray(T[] arr) {
+    public DynamicArray(Class<T> clazz, T[] arr) {
         int computedCap = arr.length > DEFAULT_CAPACITY ? arr.length*2 : DEFAULT_CAPACITY;
-        this.arr = (T[])Array.newInstance(Object.class, computedCap);
+        this.arr = (T[])Array.newInstance(clazz, computedCap);
         this.capacity = computedCap;
         for(T elem : arr)
             this.append(elem);
     }
     
-    public DynamicArray(int capacity) {
-        this.arr = (T[])Array.newInstance(Object.class, capacity);
+    public DynamicArray(Class<T> clazz, int capacity) {
+        this.arr = (T[])Array.newInstance(clazz, capacity);
         this.capacity = capacity;
     }
     
     private void resize() {
-        int newCap = capacity*2;
-        T[] newArr = (T[])Array.newInstance(Object.class, newCap);
+        int newCap = capacity*2; //Bir yerden sonra 2 katına çıkarmak fazla olacaktır. Farklı yöntemler uygulanabilir.
+        T[] newArr = (T[])Array.newInstance(this.arr.getClass().componentType(), newCap);
         System.arraycopy(arr, 0, newArr, 0, arr.length);
         arr = newArr;
         capacity = newCap;
@@ -47,7 +47,7 @@ public final class DynamicArray<T> implements IDynamicArray<T>, Iterable<T> {
     }
     
     private boolean isResizeRequired() {
-        return size + 1 < capacity;
+        return size + 1 > capacity; //Değiştirilebilir.
     }
     
     @Override
@@ -117,7 +117,6 @@ public final class DynamicArray<T> implements IDynamicArray<T>, Iterable<T> {
     @Override
     public Iterator<T> iterator() 
     {      
-        // OverRiding Default List Iterator 
         Iterator<T> it = new Iterator<T>() 
         {
             private int index = 0;

@@ -10,9 +10,9 @@ package Algorithms.LinkedList;
  */
 public class NthNodeFromEndOfLL {
     //listeyi 2 kere traverse ediyor
-    int naiveSolution(SingleNode head, int n) {
+    int naiveSolution(SinglyNode head, int n) {
     	int size = 0;
-    	SingleNode itr = head;
+    	SinglyNode itr = head;
     	
     	while(itr != null) {
     	    size++;
@@ -31,11 +31,11 @@ public class NthNodeFromEndOfLL {
     }
     
     //listeyi 1 kere traverse ediyor
-    int efficientSolution(SingleNode head, int n) {
+    int efficientSolution(SinglyNode head, int n) {
         if(head == null) return -1;
         
-        SingleNode left = head;
-        SingleNode right = head;
+        SinglyNode left = head;
+        SinglyNode right = head;
         
         for(int i=0;i<n-1;i++) {
             right = right.next;

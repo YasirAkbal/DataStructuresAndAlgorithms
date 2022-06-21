@@ -34,7 +34,7 @@ import DataStructures.HashTable.Classes.HashTableChaining;
 import DataStructures.HashTable.Classes.HashTableLinProb;
 import DataStructures.LinkedLists.Abstract.ILinkedList;
 import DataStructures.LinkedLists.DoublyCircularLinkedList;
-import DataStructures.LinkedLists.SingleLinkedList;
+import DataStructures.LinkedLists.SinglyLinkedList;
 import Utils.ArrayUtils;
 import Utils.IntArrayUtils;
 import java.util.ArrayList;
@@ -217,7 +217,7 @@ public class Test {
         System.out.println("<---------------------->");
         LLTestCases(myDCLL);*/
         
-        DynamicArray<Integer> dynArr = new DynamicArray<>(3);
+        DynamicArray<Integer> dynArr = new DynamicArray<>(Integer.class,1);
         dynArr.append(2);
         dynArr.append(23);
         dynArr.append(52);
@@ -230,6 +230,7 @@ public class Test {
         }
         System.out.println();
         System.out.println(dynArr.size());
+        System.out.println(dynArr.get(1));
     }
     
     private static void LLTestCases(ILinkedList<Integer> llist) {

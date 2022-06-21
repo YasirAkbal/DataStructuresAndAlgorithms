@@ -148,7 +148,6 @@ public class HashTableLinProb<K,V> implements IHashTable<K,V>, IOpenHashing, Ite
     @Override
     public Iterator<HashNode<K,V>> iterator() 
     {      
-        // OverRiding Default List Iterator 
         Iterator<HashNode<K,V>> it = new Iterator<HashNode<K,V>>() 
         {
             private int count = 0;

@@ -6,7 +6,7 @@ package DataStructures.LinkedLists;
 
 import DataStructures.LinkedLists.Abstract.ILinkedList;
 import DataStructures.LinkedLists.Abstract.LinkedListBase;
-import DataStructures.LinkedLists.Nodes.NodeSingleLL;
+import DataStructures.LinkedLists.Nodes.NodeSinglyLL;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -15,12 +15,12 @@ import java.util.Iterator;
  *
  * @author yasir
  */
-public final class SingleLinkedList<T> extends LinkedListBase<T,NodeSingleLL<T>> implements ILinkedList<T>, Iterable<T> {  
-    protected NodeSingleLL<T> tail;
+public final class SinglyLinkedList<T> extends LinkedListBase<T,NodeSinglyLL<T>> implements ILinkedList<T>, Iterable<T> {  
+    protected NodeSinglyLL<T> tail;
     
-    public SingleLinkedList() { }
+    public SinglyLinkedList() { }
     
-    public SingleLinkedList(ArrayList<T> toAdd) { // diğer koleksiyon tipleri için de yazılabilir.
+    public SinglyLinkedList(ArrayList<T> toAdd) { // diğer koleksiyon tipleri için de yazılabilir.
         for(T data: toAdd) {
             this.addLast(data);
         }
@@ -28,7 +28,7 @@ public final class SingleLinkedList<T> extends LinkedListBase<T,NodeSingleLL<T>>
     
     @Override
     public int search(T value) {
-        NodeSingleLL<T> itr = head;
+        NodeSinglyLL<T> itr = head;
         int pos = 1;
         
         while(itr != null) {
@@ -58,7 +58,7 @@ public final class SingleLinkedList<T> extends LinkedListBase<T,NodeSingleLL<T>>
 
     @Override
     public void addFirst(T value) {
-        NodeSingleLL<T> newNode = new NodeSingleLL<>(value);
+        NodeSinglyLL<T> newNode = new NodeSinglyLL<>(value);
         
         if(head == null) {
             head = tail = newNode;
@@ -72,7 +72,7 @@ public final class SingleLinkedList<T> extends LinkedListBase<T,NodeSingleLL<T>>
 
     @Override
     public void addLast(T value) {
-        NodeSingleLL<T> newNode = new NodeSingleLL<>(value);
+        NodeSinglyLL<T> newNode = new NodeSinglyLL<>(value);
         
         if(tail == null) {
             tail = head = newNode;
@@ -91,8 +91,8 @@ public final class SingleLinkedList<T> extends LinkedListBase<T,NodeSingleLL<T>>
         if(position == 1) { this.addFirst(value); return true; }
         if(position == this.size+1) { this.addLast(value); return true; }
         
-        NodeSingleLL<T> prev = getNodeFromPosition(position-1);
-        NodeSingleLL<T> newNode = new NodeSingleLL<>(value);
+        NodeSinglyLL<T> prev = getNodeFromPosition(position-1);
+        NodeSinglyLL<T> newNode = new NodeSinglyLL<>(value);
         newNode.next = prev.next;
         prev.next = newNode;
         size++;
@@ -123,7 +123,7 @@ public final class SingleLinkedList<T> extends LinkedListBase<T,NodeSingleLL<T>>
             toDelete = head.data;
             head = null;
         } else {
-            NodeSingleLL<T> prev = this.getNodeFromPosition(size-1);
+            NodeSinglyLL<T> prev = this.getNodeFromPosition(size-1);
             toDelete = prev.next.data;
             prev.next = null;
             tail = prev;
@@ -136,7 +136,7 @@ public final class SingleLinkedList<T> extends LinkedListBase<T,NodeSingleLL<T>>
     public T removeFirst() {
         if(head == null) return null;
         
-        NodeSingleLL<T> toDelete = head;
+        NodeSinglyLL<T> toDelete = head;
         head = head.next;
         size--;
         return toDelete.data;
@@ -149,8 +149,8 @@ public final class SingleLinkedList<T> extends LinkedListBase<T,NodeSingleLL<T>>
         if(position == 1) { return this.removeFirst(); }
         if(position == size) { return this.removeLast(); }
         
-        NodeSingleLL<T> prev = getNodeFromPosition(position-1);
-        NodeSingleLL<T> toDelete = prev.next;
+        NodeSinglyLL<T> prev = getNodeFromPosition(position-1);
+        NodeSinglyLL<T> toDelete = prev.next;
         prev.next = prev.next.next;
         size--;
         return toDelete.data;
@@ -158,7 +158,7 @@ public final class SingleLinkedList<T> extends LinkedListBase<T,NodeSingleLL<T>>
     
     @Override
     public T get(int position) {
-        NodeSingleLL<T> node = getNodeFromPosition(position);
+        NodeSinglyLL<T> node = getNodeFromPosition(position);
         
         if(node == null)
             return null;
@@ -167,8 +167,8 @@ public final class SingleLinkedList<T> extends LinkedListBase<T,NodeSingleLL<T>>
     }
     
     @Override
-    protected NodeSingleLL<T> getNodeFromValue(T value) {
-        NodeSingleLL<T> itr = head;
+    protected NodeSinglyLL<T> getNodeFromValue(T value) {
+        NodeSinglyLL<T> itr = head;
         
         while(itr != null) {
             if(itr.data.equals(value))
@@ -180,10 +180,10 @@ public final class SingleLinkedList<T> extends LinkedListBase<T,NodeSingleLL<T>>
     }
 
     @Override
-    protected NodeSingleLL<T> getNodeFromPosition(int position) {
+    protected NodeSinglyLL<T> getNodeFromPosition(int position) {
         if(position < 1 || position > size) return null;
         
-        NodeSingleLL<T> itr = head;
+        NodeSinglyLL<T> itr = head;
         
         for(int i=0;i<position-1;i++)
             itr = itr.next;
@@ -194,7 +194,7 @@ public final class SingleLinkedList<T> extends LinkedListBase<T,NodeSingleLL<T>>
     @Override
     public Iterator<T> iterator() {
         Iterator<T> it = new Iterator<T>() {
-            private NodeSingleLL<T> curr = head;
+            private NodeSinglyLL<T> curr = head;
             
             @Override
             public boolean hasNext() 

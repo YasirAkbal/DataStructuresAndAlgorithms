@@ -8,11 +8,11 @@ package DataStructures.LinkedLists.Nodes;
  *
  * @author yasir
  */
-public class NodeSingleLL<T> {
+public class NodeSinglyLL<T> {
     public T data;
-    public NodeSingleLL<T> next;
+    public NodeSinglyLL<T> next;
     
-    public NodeSingleLL(T data) {
+    public NodeSinglyLL(T data) {
         this.data = data;
     }
 }

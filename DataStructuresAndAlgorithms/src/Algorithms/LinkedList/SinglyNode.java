@@ -8,11 +8,11 @@ package Algorithms.LinkedList;
  *
  * @author yasir
  */
-class SingleNode {
+public class SinglyNode {
     int data;
-    SingleNode next;
+    SinglyNode next;
     
-    public SingleNode(int data) {
+    public SinglyNode(int data) {
         this.data = data;
     }
 }

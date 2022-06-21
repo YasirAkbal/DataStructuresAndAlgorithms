@@ -10,15 +10,15 @@ package Algorithms.LinkedList;
  * head'ı verilen sıralı(küçükten büyüğe) linked list'e sıralanmış olma durumunu bozmadan eleman ekleme
  */
 public class SortedInsertInALinkedList {
-    SingleNode solution(SingleNode head, int data) {
+    SinglyNode solution(SinglyNode head, int data) {
         if(head == null) return null; //ll boşsa
         
-        SingleNode newNode = new SingleNode(data);
+        SinglyNode newNode = new SinglyNode(data);
         if(data < head.data) { //eklenecek eleman headdeki elemandan küçükse corner case oluşur.
             newNode.next = head;
             return newNode;
         } else {
-            SingleNode curr = head;
+            SinglyNode curr = head;
             
             while(curr.next != null && curr.next.data < data) {
                 curr = curr.next;

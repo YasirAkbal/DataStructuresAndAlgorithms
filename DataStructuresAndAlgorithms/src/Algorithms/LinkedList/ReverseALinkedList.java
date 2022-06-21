@@ -9,16 +9,16 @@ package Algorithms.LinkedList;
  * @author yasir
  */
 public class ReverseALinkedList {
-    SingleNode iterative(SingleNode head) {
+    static SinglyNode iterative(SinglyNode head) {
         if(head == null) return null;
         if(head.next == null) return head;
         
-        SingleNode prev = head;
-        SingleNode curr = head.next;
+        SinglyNode prev = head;
+        SinglyNode curr = head.next;
         prev.next = null;
         
         while(curr != null) {
-            SingleNode temp = curr.next;
+            SinglyNode temp = curr.next;
             curr.next = prev;
             
             prev = curr;
@@ -28,15 +28,26 @@ public class ReverseALinkedList {
         return prev;
     }
     
-    SingleNode recursive(SingleNode curr, SingleNode prev) {
-        if(curr == null) { return null; }
+    static SinglyNode recursive1(SinglyNode head) {
+        if(head == null) return null;
+        if(head.next == null) return head;
+
+        SinglyNode restHead = recursive1(head.next);
+        SinglyNode restTail = head.next;
+        restTail.next = head;
+        head.next = null;
+        return restHead;
+    }
+    
+    static SinglyNode recursive2(SinglyNode head) {
+        return _recursive2(head, null);
+    }
+    
+    private static SinglyNode _recursive2(SinglyNode curr, SinglyNode prev) {
+        if(curr == null) return prev;
         
-        if(curr.next == null) {
-            curr.next = prev;
-            prev.next = null;
-            return curr;
-        } else {
-            return recursive(curr.next,curr);
-        }
+        SinglyNode currNext = curr.next;
+        curr.next = prev;
+        return _recursive2(currNext,curr);
     }
 }
