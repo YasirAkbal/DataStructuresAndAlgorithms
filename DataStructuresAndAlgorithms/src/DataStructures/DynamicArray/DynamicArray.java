@@ -42,8 +42,12 @@ public final class DynamicArray<T> implements IDynamicArray<T>, Iterable<T> {
         capacity = newCap;
     }
     
-    private boolean isValidIndex(int index) {
+    private boolean isValidIndexForAccess(int index) {
         return index >= 0 && index < size;
+    }
+    
+    private boolean isValidIndexForInsert(int index) {
+        return index >= 0 && index <= size;
     }
     
     private boolean isResizeRequired() {
@@ -80,7 +84,7 @@ public final class DynamicArray<T> implements IDynamicArray<T>, Iterable<T> {
 
     @Override
     public T get(int index) {
-        if(!isValidIndex(index))
+        if(!isValidIndexForAccess(index))
             throw new ArrayIndexOutOfBoundsException();
         
         return arr[index];
@@ -88,21 +92,21 @@ public final class DynamicArray<T> implements IDynamicArray<T>, Iterable<T> {
 
     @Override
     public T remove(int index) {
-        if(!isValidIndex(index))
+        if(!isValidIndexForAccess(index))
             throw new ArrayIndexOutOfBoundsException();
         
+        T deleted = arr[index];
         for(int i=index;i<size-1;i++)
             arr[i] = arr[i+1];
-        
+         
         size--;
-        T deleted = arr[size];
         arr[size] = null;
         return deleted;
     }
 
     @Override
     public void insert(int index, T value) {
-        if(!isValidIndex(index))
+        if(!isValidIndexForInsert(index))
             throw new ArrayIndexOutOfBoundsException();
         if(isResizeRequired())
             resize();

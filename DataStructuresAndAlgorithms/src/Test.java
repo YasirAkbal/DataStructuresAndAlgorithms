@@ -229,6 +229,7 @@ public class Test {
             System.out.print(i + " ");
         }
         System.out.println();
+        System.out.println(dynArr.remove(2));
         System.out.println(dynArr.size());
         System.out.println(dynArr.get(1));
     }
