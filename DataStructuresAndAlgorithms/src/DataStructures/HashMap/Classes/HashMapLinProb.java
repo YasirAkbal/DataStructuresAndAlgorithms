@@ -2,25 +2,25 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package DataStructures.HashTable.Classes;
+package DataStructures.HashMap.Classes;
 
-import DataStructures.HashTable.Abstract.IOpenHashing;
-import DataStructures.HashTable.Abstract.IHashTable;
+import DataStructures.HashMap.Abstract.IOpenHashing;
 import java.lang.reflect.Array;
 import java.util.Iterator;
+import DataStructures.HashMap.Abstract.IHashMap;
 
 /**
  *
  * @author ahmetyasir
  */
-public class HashTableLinProb<K,V> implements IHashTable<K,V>, IOpenHashing, Iterable<HashNode<K,V>> {
+public class HashMapLinProb<K,V> implements IHashMap<K,V>, IOpenHashing, Iterable<HashNode<K,V>> {
     private int capacity;
     private int size;
     private double loadFactor;
     private HashNode<K,V>[] hashTable;
     private boolean[] dummyTable; //ilgili indisteki eleman silinmişse -> true, silinmemişse -> false
     
-    public HashTableLinProb(int capacity, double loadFactor) {
+    public HashMapLinProb(int capacity, double loadFactor) {
         this.capacity = capacity;
         this.size = 0;
         this.loadFactor = loadFactor;
@@ -55,7 +55,7 @@ public class HashTableLinProb<K,V> implements IHashTable<K,V>, IOpenHashing, Ite
         
         int i = 0;
         while(this.hashTable[hash] != null && !this.dummyTable[hash] && i < this.capacity) { //null(hiç eleman eklenmemiş) veya silinmiş bir göz arıyoruz.
-            if(this.hashTable[hash].key == key && !this.dummyTable[hash]) { //tekrar eden elemanlara yer yok!
+            if(this.hashTable[hash].key.equals(key) && !this.dummyTable[hash]) { //tekrar eden elemanlara yer yok!
                 return false;
             }
             
@@ -112,7 +112,7 @@ public class HashTableLinProb<K,V> implements IHashTable<K,V>, IOpenHashing, Ite
         
         int i = 0;
         while(this.hashTable[hash] != null && i < this.capacity) { 
-            if(this.hashTable[hash].key == key && !this.dummyTable[hash]) { 
+            if(this.hashTable[hash].key.equals(key) && !this.dummyTable[hash]) { 
                 return hash;
             }
             hash = (hash + 1)%this.capacity;

@@ -2,23 +2,23 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package DataStructures.HashTable.Classes;
+package DataStructures.HashMap.Classes;
 
-import DataStructures.HashTable.Abstract.IHashTable;
 import java.lang.reflect.Array;
 import java.util.Iterator;
 import java.util.LinkedList;
+import DataStructures.HashMap.Abstract.IHashMap;
 
 /**
  *
  * @author yasir
  */
-public class HashTableChaining<K,V> implements IHashTable<K,V> {
+public class HashMapChaining<K,V> implements IHashMap<K,V> {
     private int capacity;
     private int size;
     private LinkedList<HashNode<K,V>>[] hashTable;
     
-    public HashTableChaining(int capacity) {
+    public HashMapChaining(int capacity) {
         this.capacity = capacity;
         this.size = 0;
         this.hashTable = (LinkedList<HashNode<K,V>>[])Array.newInstance(LinkedList.class, capacity);
@@ -43,7 +43,7 @@ public class HashTableChaining<K,V> implements IHashTable<K,V> {
         final LinkedList<HashNode<K,V>> list = hashTable[hash];
         
         for(HashNode<K,V> elem : list) { 
-            if(elem.key == key) { return true; }
+            if(elem.key.equals(key)) { return true; }
         }
 
         return false;
@@ -76,7 +76,7 @@ public class HashTableChaining<K,V> implements IHashTable<K,V> {
             Iterator<HashNode<K,V>> itr = hashTable[hash].iterator();
             int i=0;
             while(itr.hasNext()) {
-                if(itr.next().key == key) {
+                if(itr.next().key.equals(key)) {
                     HashNode<K,V> deleted = list.remove(i);
                     size--;
                     return deleted.value;
@@ -93,7 +93,7 @@ public class HashTableChaining<K,V> implements IHashTable<K,V> {
         final LinkedList<HashNode<K,V>> list = this.hashTable[hash];
         
         for(HashNode<K,V> node : list) {
-            if(node.value == val)
+            if(node.value.equals(val))
                 return true;
         }
         
@@ -108,7 +108,7 @@ public class HashTableChaining<K,V> implements IHashTable<K,V> {
         
         final LinkedList<HashNode<K,V>> list = this.hashTable[hash];
         for(HashNode<K,V> node : list) {
-            if(node.key == key) {
+            if(node.key.equals(key)) {
                 return node.value;
             }
         }

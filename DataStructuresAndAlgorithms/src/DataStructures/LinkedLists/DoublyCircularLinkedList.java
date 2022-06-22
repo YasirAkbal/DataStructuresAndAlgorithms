@@ -29,7 +29,7 @@ public final class DoublyCircularLinkedList<T> extends LinkedListBase<T,NodeDoub
         NodeDoubCircLL<T> itr = head;
         
         do {
-            if(itr.data == value)
+            if(itr.data.equals(value))
                 return itr;
             itr = itr.next;
         } while(itr != head);
