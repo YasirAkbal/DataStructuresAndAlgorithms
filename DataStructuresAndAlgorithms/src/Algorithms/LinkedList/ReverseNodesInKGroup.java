@@ -50,4 +50,54 @@ public class ReverseNodesInKGroup {
         
         return newHead;
     } 
+    
+    public static SinglyNode recursive(SinglyNode head, int k) {
+        SinglyNode curr = head;
+        SinglyNode prev = null;
+        int count = 1;
+        
+        while(curr != null && count <= k) {
+            SinglyNode temp = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = temp;
+            
+            count++;
+        }
+        
+        if(curr != null)
+            head.next = recursive(curr, k);
+        
+        return prev;
+    }
+    
+    public static SinglyNode iterative(SinglyNode head, int k) {
+        SinglyNode curr = head;
+        SinglyNode prev;
+        int count;
+        SinglyNode newHead = null;
+        SinglyNode prevTail = null;
+        
+        while(curr != null) {
+            count = 0;
+            prev = null;
+            SinglyNode first = curr;
+            while(curr != null && count < k) {
+                SinglyNode temp = curr.next;
+                curr.next = prev;
+                prev = curr;
+                curr = temp;
+                count++;
+            }
+            
+            if(newHead == null)
+                newHead = prev;
+            else {
+                prevTail.next = prev;
+            }
+            prevTail = first;
+        }
+        
+        return newHead;
+    }
 }
