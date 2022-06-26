@@ -26,7 +26,7 @@ public class HashMapChaining<K,V> implements IHashMap<K,V> {
     
     @Override
     public int hashFunc(K key) {
-        if(key.getClass() == int.class || key.getClass() == Integer.class) {
+        if(key.getClass() == Integer.class) {
             int intVal = (int)key;
             return intVal%capacity; //capacity'i asal sayı seçmekte fayda var
         } else { //diğer tipler için de oluşturulabilir.

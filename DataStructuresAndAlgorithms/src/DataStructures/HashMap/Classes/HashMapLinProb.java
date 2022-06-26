@@ -16,7 +16,7 @@ import DataStructures.HashMap.Abstract.IHashMap;
 public class HashMapLinProb<K,V> implements IHashMap<K,V>, IOpenHashing, Iterable<HashNode<K,V>> {
     private int capacity;
     private int size;
-    private double loadFactor;
+    private final double loadFactor;
     private HashNode<K,V>[] hashTable;
     private boolean[] dummyTable; //ilgili indisteki eleman silinmişse -> true, silinmemişse -> false
     
@@ -30,7 +30,7 @@ public class HashMapLinProb<K,V> implements IHashMap<K,V>, IOpenHashing, Iterabl
     
     @Override
     public int hashFunc(K key) {
-        if(key.getClass() == int.class || key.getClass() == Integer.class) {
+        if(key.getClass() == Integer.class) {
             int intVal = (int)key;
             return intVal%capacity; //capacity'i asal sayı seçmekte fayda var
         } else { //diğer tipler için de oluşturulabilir.
@@ -59,7 +59,8 @@ public class HashMapLinProb<K,V> implements IHashMap<K,V>, IOpenHashing, Iterabl
                 return false;
             }
             
-            hash = (hash + (++i))%this.capacity;
+            hash = (hash + 1)%this.capacity;
+            i++;
         }
         
         if(this.hashTable[hash] == null || this.dummyTable[hash]) {
