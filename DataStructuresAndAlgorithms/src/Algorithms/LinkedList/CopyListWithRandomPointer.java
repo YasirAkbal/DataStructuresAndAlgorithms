@@ -39,12 +39,10 @@ public class CopyListWithRandomPointer {
         while(curr != null && curr.next != null) {
             RandomNode newNode = curr.next;
             temp = newNode.next;
-            
                 
             if(curr.arb != null)
                 newNode.arb = curr.arb.next;
             
- 
             curr = temp;
         }
         
@@ -56,11 +54,9 @@ public class CopyListWithRandomPointer {
             if(newNode.next != null)
                 newNode.next = newNode.next.next;
             curr.next = temp;
-            
-            
+               
             curr = curr.next;
         }
-        
         
         return result;
     }
