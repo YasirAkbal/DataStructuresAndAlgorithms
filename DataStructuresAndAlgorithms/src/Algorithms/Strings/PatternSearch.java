@@ -89,12 +89,12 @@ public class PatternSearch {
         ArrayList<Integer> result = new ArrayList<>();
         int n = text.length();
         int m = pattern.length();
-        int dPowMinusOne = 1;
+        int dMinusOnePow = 1;
         int windowHash = 0;
         int patHash = 0;
         
         for(int i=0;i<m-1;i++) 
-            dPowMinusOne = (dPowMinusOne*d)%mod;
+            dMinusOnePow = (dMinusOnePow*d)%mod;
 
         for(int i=0;i<m;i++) { // t[0]*5^(m-1) + t[1]*5^(m-2) + ... + t[m-1]*5^0
             windowHash = (windowHash*d + text.charAt(i))%mod;
@@ -113,7 +113,7 @@ public class PatternSearch {
             }
             
             if(i < n-m) { //zaten en son window'a ulaşmışsan bir sonraki window olmayacağı için hash değeri hesaplama. aksi halde indexbounds hatası alınacak.
-                windowHash = (d*(windowHash - dPowMinusOne*text.charAt(i)) + text.charAt(i+m))%mod;
+                windowHash = (d*(windowHash - dMinusOnePow*text.charAt(i)) + text.charAt(i+m))%mod;
                 if(windowHash < mod) //hash negatifse pozitif yap.
                     windowHash += mod;
             }

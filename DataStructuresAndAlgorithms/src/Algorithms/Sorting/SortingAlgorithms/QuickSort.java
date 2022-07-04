@@ -5,6 +5,7 @@
 package Algorithms.Sorting.SortingAlgorithms;
 
 import Utils.ArrayUtils;
+import java.util.Objects;
 
 /**
  *
@@ -134,7 +135,7 @@ public final class QuickSort {
         }
         
         for(int i=left;i<=right;i++) { //pivota eşit olanları koy. Eşit olanlar yeni dizide orjinal dizideki sırasıyla oldugu için stability sağlanıyor.
-            if(arr[i] == arr[pivot]) {
+            if(Objects.equals(arr[i], arr[pivot])) {
                 temp[index++] = arr[i];
             }
         }

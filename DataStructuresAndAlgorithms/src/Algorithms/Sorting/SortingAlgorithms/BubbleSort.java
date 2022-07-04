@@ -21,7 +21,7 @@ public final class BubbleSort {
         
         for(int i=0;i<n-1;i++) {
             anySwap = false;
-            for(int j=0;j<n-i-1;j++) { //her i pass işleminde sonra dizinin sonra dizinin son i elemanı sıralı olur. Bunları tekrar kontrol etme 
+            for(int j=0;j<n-i-1;j++) { //her i pass işleminde sonra dizinin son i elemanı sıralı olur. Bunları tekrar kontrol etme 
                 if(arr[j] > arr[j+1]) {
                     util.swap(arr, j, j+1);
                 }
