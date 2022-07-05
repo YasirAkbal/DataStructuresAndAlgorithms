@@ -28,6 +28,7 @@ import Algorithms.Strings.LeftMostNonRepeatingElement;
 import Algorithms.Strings.LeftMostRepatingCharacter;
 import Algorithms.Strings.PatternSearch;
 import Algorithms.Strings.ReverseWordsInString;
+import DataStructures.Base.Abstract.VectorI;
 import DataStructures.DynamicArray.DynamicArray;
 import DataStructures.HashMap.Classes.HashNode;
 import DataStructures.HashMap.Classes.HashMapChaining;
@@ -35,12 +36,16 @@ import DataStructures.HashMap.Classes.HashMapLinProb;
 import DataStructures.LinkedLists.Abstract.ILinkedList;
 import DataStructures.LinkedLists.DoublyCircularLinkedList;
 import DataStructures.LinkedLists.SinglyLinkedList;
+import DataStructures.Stack.Abstract.StackI;
+import DataStructures.Stack.Classes.StackWithArray;
+import DataStructures.Stack.Classes.StackWithLL;
 import Utils.ArrayUtils;
 import Utils.IntArrayUtils;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.Stack;
 import java.util.stream.Collectors;
 
 public class Test {
@@ -211,13 +216,13 @@ public class Test {
         
         //System.out.println(AnagramSearch.naiveSolution("geeksforgeeks", "frof"));
         
-        /*SingleLinkedList<Integer> mySLL = new SingleLinkedList<>();
+        /*SinglyLinkedList<Integer> mySLL = new SinglyLinkedList<>();
         DoublyCircularLinkedList<Integer> myDCLL = new DoublyCircularLinkedList<>();
         LLTestCases(mySLL);
         System.out.println("<---------------------->");
         LLTestCases(myDCLL);*/
         
-        DynamicArray<Integer> dynArr = new DynamicArray<>(Integer.class,1);
+        /*DynamicArray<Integer> dynArr = new DynamicArray<>(Integer.class,1);
         dynArr.append(2);
         dynArr.append(23);
         dynArr.append(52);
@@ -231,20 +236,24 @@ public class Test {
         System.out.println();
         System.out.println(dynArr.remove(2));
         System.out.println(dynArr.size());
-        System.out.println(dynArr.get(1));
+        System.out.println(dynArr.get(1));*/
+        
+        StackTestCases(new StackWithArray<>(Integer.class));
+        System.out.println("<------------------------->");
+        StackTestCases(new StackWithLL<>());
     }
     
     private static void LLTestCases(ILinkedList<Integer> llist) {
         llist.addLast(3);
         llist.addLast(35);
-        llist.insert(2, -13);
+        ((VectorI)llist).insert(2, -13);
         llist.addLast(11);
         llist.addFirst(31);
         
         llist.printAll();
-        System.out.println(llist.contains(3));
-        System.out.println(llist.get(6));
-        System.out.println(llist.isEmpty());
+        System.out.println(((VectorI)llist).contains(3));
+        System.out.println(llist.get(5));
+        System.out.println(((VectorI)llist).isEmpty());
         System.out.println(llist.getFirst());
         System.out.println(llist.getLast());
         System.out.println(llist.search(-13));
@@ -253,8 +262,31 @@ public class Test {
         System.out.println(llist.removeLast());
         llist.printAll();
         System.out.println(llist.remove(2));
+        llist.printAll();
         System.out.println(llist.removeLast());
         System.out.println(llist.removeFirst());
         llist.printAll();
+    }
+    
+    
+    
+    private static void StackTestCases(StackI<Integer> stack) {
+        VectorI vec = (VectorI)stack;
+        System.out.println(vec.isEmpty());
+        stack.push(35);
+        System.out.println(vec.isEmpty());
+        System.out.println(stack.peek());
+        stack.push(361);
+        stack.push(437);
+        System.out.println(vec.size());
+        System.out.println(stack.pop());
+        System.out.println(stack.peek());
+        System.out.println(vec.size());
+        vec.insert(1, 555);
+        System.out.println(stack.peek());
+        System.out.println(vec.get(1));
+        System.out.println(vec.remove(1));
+        System.out.println(vec.get(1));
+        System.out.println(stack.peek());
     }
 }

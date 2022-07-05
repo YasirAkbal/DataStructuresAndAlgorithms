@@ -18,7 +18,7 @@ public class LinearCongruental implements RandomI {
     private int lastNum = 1;
     
     public LinearCongruental() {
-        this.max = (int)Math.pow(2,31);
+        this.max = (int)(Math.pow(2,31)-1);
     }
     
     public LinearCongruental(int max)  {

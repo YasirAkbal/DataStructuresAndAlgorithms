@@ -4,6 +4,8 @@
  */
 package DataStructures.LinkedLists;
 
+import DataStructures.Base.Abstract.VectorI;
+import DataStructures.Base.Exceptions.NotValidIndexOrPosition;
 import DataStructures.LinkedLists.Abstract.ILinkedList;
 import DataStructures.LinkedLists.Abstract.LinkedListBase;
 import DataStructures.LinkedLists.Nodes.NodeDoubCircLL;
@@ -14,7 +16,7 @@ import java.util.Iterator;
  *
  * @author yasir
  */
-public final class DoublyCircularLinkedList<T> extends LinkedListBase<T,NodeDoubCircLL<T>> implements ILinkedList<T>, Iterable<T> {
+public final class DoublyCircularLinkedList<T> extends LinkedListBase<T,NodeDoubCircLL<T>> implements ILinkedList<T>, Iterable<T>, VectorI<T> {
     public DoublyCircularLinkedList() {}
     public DoublyCircularLinkedList(ArrayList<T> toAdd) {
         for(T data: toAdd) {
@@ -39,7 +41,7 @@ public final class DoublyCircularLinkedList<T> extends LinkedListBase<T,NodeDoub
 
     @Override
     protected NodeDoubCircLL<T> getNodeFromPosition(int position) {
-        if(position < 1 || position > size) return null;
+        if(position < 1 || position > size) throw new NotValidIndexOrPosition();
         
         NodeDoubCircLL<T> itr = head;
         for(int i=0;i<position-1;i++) {
@@ -118,11 +120,11 @@ public final class DoublyCircularLinkedList<T> extends LinkedListBase<T,NodeDoub
     }
 
     @Override
-    public boolean insert(int position, T value) {
-        if(position < 0 || position > size+1) return false;
+    public void insert(int position, T value) throws NotValidIndexOrPosition {
+        if(position < 0 || position > size+1) throw new NotValidIndexOrPosition();
         
-        if(position == 1) { addFirst(value); return true; }
-        if(position == size+1) { addLast(value); return true; }
+        if(position == 1) { addFirst(value); return; }
+        if(position == size+1) { addLast(value); return; }
         
         NodeDoubCircLL<T> newNode = new NodeDoubCircLL<>(value);
         NodeDoubCircLL<T> prev = getNodeFromPosition(position-1);
@@ -132,7 +134,6 @@ public final class DoublyCircularLinkedList<T> extends LinkedListBase<T,NodeDoub
         prev.next.prev = newNode;
         prev.next = newNode;
         size++;
-        return true;
     }
 
     @Override
@@ -150,11 +151,11 @@ public final class DoublyCircularLinkedList<T> extends LinkedListBase<T,NodeDoub
     }
 
     @Override
-    public T get(int position) {
+    public T get(int position) throws NotValidIndexOrPosition {
         NodeDoubCircLL<T> node = getNodeFromPosition(position);
         
         if(node == null)
-            return null;
+            throw null;
         else
             return node.data;
     }
@@ -200,8 +201,8 @@ public final class DoublyCircularLinkedList<T> extends LinkedListBase<T,NodeDoub
     }
 
     @Override
-    public T remove(int position) {
-        if(position < 1 || position > size) return null;
+    public T remove(int position) throws NotValidIndexOrPosition {
+        if(position < 1 || position > size) throw new NotValidIndexOrPosition();
         
         if(position == 1) { return removeFirst(); }
         if(position == size) { return removeLast(); }

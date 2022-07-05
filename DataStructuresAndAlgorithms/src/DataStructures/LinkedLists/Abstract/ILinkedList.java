@@ -10,12 +10,8 @@ package DataStructures.LinkedLists.Abstract;
  */
 public interface ILinkedList<T> {
     int search(T value);
-    boolean contains(T value);
-    int size();
-    boolean isEmpty();
     void addFirst(T value);
     void addLast(T value);
-    boolean insert(int position, T value);
     T getFirst();
     T getLast();
     T get(int position);

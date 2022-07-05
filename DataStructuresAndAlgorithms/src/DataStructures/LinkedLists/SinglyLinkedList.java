@@ -4,6 +4,8 @@
  */
 package DataStructures.LinkedLists;
 
+import DataStructures.Base.Abstract.VectorI;
+import DataStructures.Base.Exceptions.NotValidIndexOrPosition;
 import DataStructures.LinkedLists.Abstract.ILinkedList;
 import DataStructures.LinkedLists.Abstract.LinkedListBase;
 import DataStructures.LinkedLists.Nodes.NodeSinglyLL;
@@ -15,12 +17,18 @@ import java.util.Iterator;
  *
  * @author yasir
  */
-public final class SinglyLinkedList<T> extends LinkedListBase<T,NodeSinglyLL<T>> implements ILinkedList<T>, Iterable<T> {  
+public final class SinglyLinkedList<T> extends LinkedListBase<T,NodeSinglyLL<T>> implements ILinkedList<T>, Iterable<T>, VectorI<T> {  
     protected NodeSinglyLL<T> tail;
     
     public SinglyLinkedList() { }
     
     public SinglyLinkedList(ArrayList<T> toAdd) { // diğer koleksiyon tipleri için de yazılabilir.
+        for(T data: toAdd) {
+            this.addLast(data);
+        }
+    }
+    
+    public SinglyLinkedList(T[] toAdd) { // diğer koleksiyon tipleri için de yazılabilir.
         for(T data: toAdd) {
             this.addLast(data);
         }
@@ -85,18 +93,17 @@ public final class SinglyLinkedList<T> extends LinkedListBase<T,NodeSinglyLL<T>>
     }
 
     @Override
-    public boolean insert(int position, T value) {
-        if(position < 1 || position > this.size+1) return false;
+    public void insert(int position, T value) throws NotValidIndexOrPosition {
+        if(position < 1 || position > this.size+1) throw new NotValidIndexOrPosition();
         
-        if(position == 1) { this.addFirst(value); return true; }
-        if(position == this.size+1) { this.addLast(value); return true; }
+        if(position == 1) { this.addFirst(value); return; }
+        if(position == this.size+1) { this.addLast(value); return; }
         
         NodeSinglyLL<T> prev = getNodeFromPosition(position-1);
         NodeSinglyLL<T> newNode = new NodeSinglyLL<>(value);
         newNode.next = prev.next;
         prev.next = newNode;
         size++;
-        return true;
     }
 
     @Override
@@ -114,14 +121,14 @@ public final class SinglyLinkedList<T> extends LinkedListBase<T,NodeSinglyLL<T>>
     }
 
     @Override
-    public T removeLast() { //tail pointer tuttugum halde bu islem O(n) karmaşıklığa sahip. tail'den bir önceki elemanı tutmak çözüm olabilirdi ama zaten double/circular linked list bunun için var.
+    public T removeLast() { //tail pointer tuttugum halde bu islem O(n) karmaşıklığa sahip. tail'den bir önceki elemanı tutmak çözüm olabilirdi ama zaten doubly circular linked list bunun için var.
         if(tail == null) return null; //aslında burada hata fırlatmak lazım. Node'daki data da null olabilir. Bu iki durum arasından ayrım yapmak mümkün değil.
         
         T toDelete;
         
         if(head.next == null) {
             toDelete = head.data;
-            head = null;
+            head = tail = null;
         } else {
             NodeSinglyLL<T> prev = this.getNodeFromPosition(size-1);
             toDelete = prev.next.data;
@@ -137,14 +144,20 @@ public final class SinglyLinkedList<T> extends LinkedListBase<T,NodeSinglyLL<T>>
         if(head == null) return null;
         
         NodeSinglyLL<T> toDelete = head;
-        head = head.next;
+        
+        if(head.next == null) {
+            head = tail = null;
+        } else {
+           head = head.next; 
+        }
+        
         size--;
         return toDelete.data;
     }
 
     @Override
-    public T remove(int position) {
-        if(position < 1 || position > size) return null;
+    public T remove(int position) throws NotValidIndexOrPosition {
+        if(position < 1 || position > size) throw new NotValidIndexOrPosition();
         
         if(position == 1) { return this.removeFirst(); }
         if(position == size) { return this.removeLast(); }
@@ -157,11 +170,11 @@ public final class SinglyLinkedList<T> extends LinkedListBase<T,NodeSinglyLL<T>>
     }
     
     @Override
-    public T get(int position) {
+    public T get(int position) throws NotValidIndexOrPosition {
         NodeSinglyLL<T> node = getNodeFromPosition(position);
         
         if(node == null)
-            return null;
+            throw null;
         else
             return node.data;
     }
@@ -180,8 +193,8 @@ public final class SinglyLinkedList<T> extends LinkedListBase<T,NodeSinglyLL<T>>
     }
 
     @Override
-    protected NodeSinglyLL<T> getNodeFromPosition(int position) {
-        if(position < 1 || position > size) return null;
+    protected NodeSinglyLL<T> getNodeFromPosition(int position) throws NotValidIndexOrPosition {
+        if(position < 1 || position > size) throw new NotValidIndexOrPosition();
         
         NodeSinglyLL<T> itr = head;
         

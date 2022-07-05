@@ -8,12 +8,6 @@ package DataStructures.DynamicArray;
  *
  * @author yasir
  */
-public interface IDynamicArray<T> {
-    boolean contains(T value);
-    int size();
-    boolean isEmpty();
+public interface DynamicArrayI<T> {
     void append(T value);
-    void insert(int index, T value);
-    T get(int index);
-    T remove(int index);
 }

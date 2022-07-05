@@ -4,6 +4,8 @@
  */
 package DataStructures.LinkedLists.Abstract;
 
+import DataStructures.Base.Exceptions.NotValidIndexOrPosition;
+
 
 /**
  *
@@ -14,5 +16,5 @@ public abstract class LinkedListBase<T,N> {
     protected int size;
     
     protected abstract N getNodeFromValue(T value);
-    protected abstract N getNodeFromPosition(int position);
+    protected abstract N getNodeFromPosition(int position) throws NotValidIndexOrPosition;
 }

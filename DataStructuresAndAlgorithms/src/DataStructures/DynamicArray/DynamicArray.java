@@ -5,12 +5,14 @@
 package DataStructures.DynamicArray;
 import java.util.Iterator;
 import java.lang.reflect.Array;
+import DataStructures.Base.Abstract.VectorI;
+import DataStructures.Base.Exceptions.NotValidIndexOrPosition;
 
 /**
  *
  * @author yasir
  */
-public final class DynamicArray<T> implements IDynamicArray<T>, Iterable<T> {
+public final class DynamicArray<T> implements DynamicArrayI<T>, VectorI<T>, Iterable<T> {
     private int size;
     private int capacity;
     private T[] arr;
@@ -83,17 +85,17 @@ public final class DynamicArray<T> implements IDynamicArray<T>, Iterable<T> {
     }
 
     @Override
-    public T get(int index) {
+    public T get(int index) throws NotValidIndexOrPosition {
         if(!isValidIndexForAccess(index))
-            throw new ArrayIndexOutOfBoundsException();
+            throw new NotValidIndexOrPosition();
         
         return arr[index];
     }
 
     @Override
-    public T remove(int index) {
+    public T remove(int index) throws NotValidIndexOrPosition {
         if(!isValidIndexForAccess(index))
-            throw new ArrayIndexOutOfBoundsException();
+            throw new NotValidIndexOrPosition();
         
         T deleted = arr[index];
         for(int i=index;i<size-1;i++)
@@ -105,9 +107,9 @@ public final class DynamicArray<T> implements IDynamicArray<T>, Iterable<T> {
     }
 
     @Override
-    public void insert(int index, T value) {
+    public void insert(int index, T value) throws NotValidIndexOrPosition{
         if(!isValidIndexForInsert(index))
-            throw new ArrayIndexOutOfBoundsException();
+            throw new NotValidIndexOrPosition();
         if(isResizeRequired())
             resize();
         
