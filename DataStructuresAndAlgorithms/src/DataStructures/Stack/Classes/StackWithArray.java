@@ -81,12 +81,15 @@ public class StackWithArray<T> implements VectorI<T>, StackI<T> {
 
     @Override
     public T remove(int position) throws NotValidIndexOrPosition {
+        T deleted = null;
+        
         try {
-            return arr.remove(size()-position);
+            deleted = arr.remove(size()-position);
         } catch(NotValidIndexOrPosition ex) {
             throw new NotValidIndexOrPosition();
-        } finally {
-            top--;
-        }   
+        }
+        
+        top--;
+        return deleted;
     }
 }
