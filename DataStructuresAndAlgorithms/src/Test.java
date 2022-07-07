@@ -21,6 +21,9 @@ import Algorithms.Sorting.SortingProblems.DutchNationalFlag;
 import Algorithms.Sorting.SortingProblems.KthSmallestElement;
 import Algorithms.Sorting.SortingProblems.MergeOverlappingIntervals;
 import Algorithms.Sorting.SortingProblems.SortArrayNegativeAndPositive;
+import Algorithms.Stack.EvaluationOfPrefix;
+import Algorithms.Stack.InfixToPostfix;
+import Algorithms.Stack.InfixToPrefix;
 import Algorithms.Strings.Anagram;
 import Algorithms.Strings.AnagramSearch;
 import Algorithms.Strings.CheckStringSubSeqAnother;
@@ -238,9 +241,19 @@ public class Test {
         System.out.println(dynArr.size());
         System.out.println(dynArr.get(1));*/
         
-        StackTestCases(new StackWithArray<>(Integer.class));
+        /*StackTestCases(new StackWithArray<>(Integer.class));
         System.out.println("<------------------------->");
-        StackTestCases(new StackWithLL<>());
+        StackTestCases(new StackWithLL<>());*/
+        
+        /*System.out.println(InfixToPostfix.infixToPostfix("x+y*(z-w)"));
+        System.out.println(InfixToPrefix.infixToPrefix("x+y*(z-w)"));
+        
+        System.out.println(InfixToPostfix.infixToPostfix("x+y*z/w+u"));
+        System.out.println(InfixToPrefix.infixToPrefix("x+y*z/w+u"));
+        
+        System.out.println(InfixToPrefix.infixToPrefix("x+y/z-w*u"));*/
+        
+        System.out.println(EvaluationOfPrefix.calculate("^ 10 ^ 2 3"));
     }
     
     private static void LLTestCases(ILinkedList<Integer> llist) {

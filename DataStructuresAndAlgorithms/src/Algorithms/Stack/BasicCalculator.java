@@ -12,6 +12,7 @@ import java.util.HashMap;
  *
  * @author yasir
  * Bu çözüme güzel bir optimizasyon lazım.
+ * https://leetcode.com/problems/basic-calculator/
  */
 public class BasicCalculator {
     static final HashMap<Character, Integer> precedences = new HashMap<>();
@@ -22,7 +23,7 @@ public class BasicCalculator {
 
         precedences.put('-', 0);
         
-        precedences.put('(', -1);
+        precedences.put('(', -1); 
     }
     
     String parseInt(String exp, int start) {
